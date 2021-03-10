@@ -7,7 +7,9 @@ export default () => {
 
   return (
     <>
-
+      <Division flex={1} justifyContent='center' alignItems='center'>
+        <Typography>Bakımcı</Typography>
+      </Division>
     </>
   )
 }
