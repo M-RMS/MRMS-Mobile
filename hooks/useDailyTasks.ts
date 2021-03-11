@@ -36,12 +36,11 @@ const useDailyTasks = (skeletonCount?: number | undefined) => {
 }
 
 enum Type {
-  Daily,
-  Weekly,
-  Monthly,
-  HalfYearly,
-  Yearly
-
+  Daily = 'Günlük Bakım',
+  Weekly = 'Haftalık Bakım',
+  Monthly = 'Aylık Bakım',
+  HalfYearly = '6 Aylık Bakım',
+  Yearly = 'Yıllık Bakım'
 }
 
 
@@ -106,6 +105,26 @@ export const data: propsTasks[] = [
     maintenance: 'Cilala',
     isDone: false,
     riskLevel: 3
+  },
+  {
+    id: 6,
+    pieceId: 26,
+    pieceName: 'Kağıt Tekeri',
+    pieceImageUrl: 'https://cdn.discordapp.com/attachments/707361479262863421/819605024166117427/unknown.png',
+    type: Type.Daily,
+    maintenance: 'Hamuru Değiştir',
+    isDone: false,
+    riskLevel: 2
+  },
+  {
+    id: 7,
+    pieceId: 26,
+    pieceName: 'Bıçak Sırtı',
+    pieceImageUrl: 'https://cdn.discordapp.com/attachments/707361479262863421/819605024166117427/unknown.png',
+    type: Type.Daily,
+    maintenance: 'Bile',
+    isDone: false,
+    riskLevel: 1
   },
 ]
 export default useDailyTasks

@@ -12,6 +12,8 @@ export default () => {
   return (
     <Division alignItems='center' width={wp(100)} position='absolute' bottom={wp(4.8)} zIndex={999}>
       <Division
+        //borderWidth={1}
+        //borderColor='#303E65'
         width={wp(65)}
         height={wp(13.6)}
         backgroundColor='#1FB9FC'

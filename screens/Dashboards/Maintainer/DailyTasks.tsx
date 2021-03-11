@@ -6,23 +6,28 @@ import TaskCard from '~/components/DailyTasks'
 import { FlatList } from 'react-native'
 import { wp } from '~/utils/responsive'
 import useDailyTasks from '~/hooks/useDailyTasks'
+import Division from '~/components/Division'
 
 export default () => {
-  const { data } = useDailyTasks(2)
+  const { data } = useDailyTasks(5)
 
   return (
     <Section>
       <FlatList
-        style={{ paddingBottom: wp(20) }}
+
         showsVerticalScrollIndicator={false}
         keyExtractor={data.id}
         data={data}
         renderItem={({ item }) => {
           return (
-            <TaskCard item={item} />
+            <>
+              <TaskCard item={item} />
+              {data.indexOf(item) == data.length - 1 ? <Division marginVertical={wp(10)} /> : <Division />}
+            </>
           )
         }}
       />
+
     </Section>
   )
 }

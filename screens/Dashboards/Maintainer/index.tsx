@@ -95,6 +95,7 @@ export default () => {
                   <DotsVertical />
                 </Division>} />
                 <MenuOptions customStyles={optionsStyles}>
+                  <MenuOption onSelect={() => { }} text='Yenile' />
                   <MenuOption onSelect={() => { }} text='Çıkış Yap' />
                 </MenuOptions>
               </Menu>
@@ -102,6 +103,7 @@ export default () => {
           </Touchable>
         </Division>
         <Typography
+          marginTop={wp(3)}
           marginLeft={wp(5)}
           fontSize={wp(5)}
           fontWeight='semi-bold'
@@ -109,6 +111,7 @@ export default () => {
           Günün Bakımları
         </Typography>
         <TaskCard />
+
 
 
       </MenuProvider>
