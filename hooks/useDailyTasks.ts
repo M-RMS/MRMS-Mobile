@@ -61,7 +61,7 @@ export const data: propsTasks[] = [
     id: 1,
     pieceId: 2,
     pieceName: 'Sarı Koca Somun',
-    pieceImageUrl: '',
+    pieceImageUrl: 'https://cdn.discordapp.com/attachments/707361479262863421/819605024166117427/unknown.png',
     type: Type.Daily,
     maintenance: 'Yağları yenile',
     isDone: false,
@@ -71,11 +71,41 @@ export const data: propsTasks[] = [
     id: 2,
     pieceId: 5,
     pieceName: 'Baskı Matkabı',
-    pieceImageUrl: '',
+    pieceImageUrl: 'https://cdn.discordapp.com/attachments/707361479262863421/819605024166117427/unknown.png',
     type: Type.Monthly,
     maintenance: 'Matkap ucunu törpüle',
     isDone: false,
     riskLevel: 4
+  },
+  {
+    id: 3,
+    pieceId: 24,
+    pieceName: 'Yapıştırıcı Başlık',
+    pieceImageUrl: 'https://cdn.discordapp.com/attachments/707361479262863421/819605024166117427/unknown.png',
+    type: Type.HalfYearly,
+    maintenance: 'Silikonları Yenile',
+    isDone: false,
+    riskLevel: 1
+  },
+  {
+    id: 4,
+    pieceId: 25,
+    pieceName: 'Oluk Kasnağı',
+    pieceImageUrl: 'https://cdn.discordapp.com/attachments/707361479262863421/819605024166117427/unknown.png',
+    type: Type.HalfYearly,
+    maintenance: 'Parçayı Değiştir',
+    isDone: false,
+    riskLevel: 5
+  },
+  {
+    id: 5,
+    pieceId: 26,
+    pieceName: 'Bant Tırnağı',
+    pieceImageUrl: 'https://cdn.discordapp.com/attachments/707361479262863421/819605024166117427/unknown.png',
+    type: Type.Daily,
+    maintenance: 'Cilala',
+    isDone: false,
+    riskLevel: 3
   },
 ]
 export default useDailyTasks

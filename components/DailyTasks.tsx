@@ -80,10 +80,20 @@ export default ({ item, vertical }: DailyTasksProps) => {
   }
 
   return (
-    <Division>
-      <Typography>
-        {item.maintenance}
-      </Typography>
+    <Division
+      borderColor={item.riskLevel == 5 ? '#D12535'
+        : item.riskLevel == 4 ? '#F68121'
+          : item.riskLevel == 3 ? '#F6CD0F'
+            : item.riskLevel == 2 ? '#319847'
+              : '#1FB9FC'}
+      marginVertical={wp(1.5)}
+      marginHorizontal={wp(5)}
+      borderRadius={wp(10)}
+      width={wp(90)}
+      height={wp(25)}
+      borderWidth={1.5}
+      backgroundColor='#ffffff'>
+
     </Division>
   )
 }

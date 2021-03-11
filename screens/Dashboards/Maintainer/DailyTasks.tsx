@@ -11,8 +11,10 @@ export default () => {
   const { data } = useDailyTasks(2)
 
   return (
-    <Section title="Günün Bakımları" >
+    <Section>
       <FlatList
+        style={{ paddingBottom: wp(20) }}
+        showsVerticalScrollIndicator={false}
         keyExtractor={data.id}
         data={data}
         renderItem={({ item }) => {
