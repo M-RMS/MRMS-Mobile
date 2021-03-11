@@ -7,7 +7,7 @@ import {
 
 import Division from './Division'
 
-import ArrowDown from '~/components/SVGComponents/ArrowDown'
+import ArrowDown from '~/SVGComponents/BackArrow'
 import useTheme from '~/hooks/useTheme'
 import { wp } from '~/utils/responsive'
 

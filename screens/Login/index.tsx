@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native'
 export default () => {
   const { navigate } = useNavigation()
 
-
   return (
     <>
       <Division flex={1} justifyContent='center' alignItems='center'>
