@@ -8,76 +8,67 @@ import { propsTasks } from '~/hooks/useDailyTasks'
 import useTheme from '~/hooks/useTheme'
 import { useNavigation } from '@react-navigation/native'
 import { wp, hp } from '~/utils/responsive'
-import { StyleSheet } from 'react-native';
 import ArrowDown from '~/SVGComponents/ArrowDown'
 import UpArrow from '~/SVGComponents/UpArrow'
 import Detail from '~/SVGComponents/Detail'
 
-const directionMap: any = {
-  vertical: {
-    x: 'row',
-    y: 'column'
-  },
-  horizontal: {
-    x: 'column',
-    y: 'row'
-  }
-}
-
 interface DailyTasksProps {
   item: propsTasks
-  vertical?: boolean
   onPress?(): any
 }
 
-export default ({ item, vertical }: DailyTasksProps) => {
+export default ({ item }: DailyTasksProps) => {
   const { navigate } = useNavigation()
   const theme = useTheme()
-  //const { navigate } = useNavigation()
-  const { top, left, right, bottom } = theme.spacing.insets
-  const direction = directionMap[vertical ? 'vertical' : 'horizontal']
-  const paddingStyles = vertical
-    ? {}
-    : {
-      paddingTop: top,
-      paddingBottom: bottom
-    }
-  const layoutTrick = vertical
-    ? {}
-    : {
-      marginHorizontal: -20,
-      paddingHorizontal: 20
-    }
 
   if (!item) {
 
     return (
       <Division
+        flexDirection='row'
+        marginVertical={wp(1.5)}
         marginHorizontal={wp(5)}
-        {...layoutTrick}
-        flexDirection={direction.y}
-        overflow='hidden'
-        backgroundColor='white'
-        withBorderRadius
-        width={vertical ? wp(90) : 'auto'}
-        height={vertical ? wp(20) : 'auto'}>
-        <Division {...paddingStyles} flex={vertical ? 7 : 1} overflow='hidden'>
+        borderRadius={wp(10)}
+        width={wp(90)}
+        height={wp(32)}
+        backgroundColor='#ffffff'>
+        <Division
+          marginLeft={wp(5)}
+          marginTop={wp(5)}
+          width={wp(10)}
+          height={wp(10)}
+          borderRadius={wp(5)}>
           <Skeleton />
         </Division>
+        <Division>
+          <Division
+            marginTop={wp(5)}
+            marginLeft={wp(3)}
+            width={wp(50)}
+            height={wp(7)}>
+            <Skeleton />
+          </Division>
+          <Division
+            marginTop={wp(1)}
+            marginLeft={wp(3)}
+            width={wp(50)}
+            height={wp(7)}>
+            <Skeleton />
+          </Division>
+          <Division
+            marginTop={wp(1)}
+            marginLeft={wp(3)}
+            width={wp(50)}
+            height={wp(7)}>
+            <Skeleton />
+          </Division>
+        </Division>
         <Division
-          paddingTop={top}
-          paddingRight={right}
-          paddingLeft={left}
-          paddingBottom={bottom}
-          flex={vertical ? 5 : 2}>
-          <Division height={25} paddingVertical={theme.spacing.itemGutter}>
-            <Skeleton />
-          </Division>
-          <Division height={25} paddingVertical={theme.spacing.itemGutter}>
-          </Division>
-          <Division height={25} paddingVertical={theme.spacing.itemGutter} margin={1}>
-            <Skeleton />
-          </Division>
+          marginTop={wp(7)}
+          marginLeft={wp(3)}
+          width={wp(12)}
+          height={wp(12)}>
+          <Skeleton />
         </Division>
       </Division>
     )
@@ -125,7 +116,6 @@ export default ({ item, vertical }: DailyTasksProps) => {
           width={wp(50)}
           marginHorizontal={wp(2)}>
           <Typography
-
             numberOfLines={arrowState ? 3 : 1}
             fontSize={wp(4)}
             color='#303E65'>
@@ -153,7 +143,7 @@ export default ({ item, vertical }: DailyTasksProps) => {
             </Typography>
           </Typography>}
         </Division>
-        <Division borderLeftWidth={1} marginRight={wp(2)} opacity={0.5} height={wp(19)} borderColor={item.riskLevel == 5 ? '#ED1766'
+        <Division borderLeftWidth={1} marginRight={wp(2)} opacity={0.5} height={arrowState ? wp(42) : wp(19)} borderColor={item.riskLevel == 5 ? '#ED1766'
           : item.riskLevel == 4 ? '#ED7823'
             : item.riskLevel == 3 ? '#FFC90A'
               : item.riskLevel == 2 ? '#78BB43'
