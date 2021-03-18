@@ -59,10 +59,10 @@ export const data: propsTasks[] = [
   {
     id: 1,
     pieceId: 2,
-    pieceName: 'Sarı Koca Somun',
+    pieceName: 'Sarı Koca SomunSarı Koca SomunSarı Koca SomunSarı Koca SomunSarı Koca SomunSarı Koca SomunSarı Koca Somun',
     pieceImageUrl: 'https://cdn.discordapp.com/attachments/707361479262863421/819605024166117427/unknown.png',
     type: Type.Daily,
-    maintenance: 'Yağları yenile',
+    maintenance: 'Yağları yenileYağları yenileYağları yenileYağları yenileYağları yenileYağları yenileYağları yenile',
     isDone: false,
     riskLevel: 2
   },

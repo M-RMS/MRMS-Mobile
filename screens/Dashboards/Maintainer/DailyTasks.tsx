@@ -1,20 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Section from '~/components/Section'
 import Touchable from '~/components/Touchable'
 import Typography from '~/components/Typography'
 import TaskCard from '~/components/DailyTasks'
-import { FlatList } from 'react-native'
+import { FlatList, RefreshControl } from 'react-native'
 import { wp } from '~/utils/responsive'
 import useDailyTasks from '~/hooks/useDailyTasks'
 import Division from '~/components/Division'
 
 export default () => {
   const { data } = useDailyTasks(5)
+  const [refreshing, setRefreshing] = useState(false)
+  const wait = (timeout: number) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout)
+    })
+  }
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true)
+    wait(5000).then(() => setRefreshing(false))
+  }, [])
 
   return (
     <Section>
       <FlatList
-
+        refreshControl={<RefreshControl
+          colors={['#303E65']}
+          refreshing={refreshing} />
+        }
         showsVerticalScrollIndicator={false}
         keyExtractor={data.id}
         data={data}
