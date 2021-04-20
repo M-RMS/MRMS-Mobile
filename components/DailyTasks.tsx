@@ -169,7 +169,10 @@ export default ({ item }: DailyTasksProps) => {
             <Touchable
               height={wp(30)}
               justifyContent='center'
-              alignItems='center'>
+              alignItems='center'
+              onPress={() => {
+                navigate('pieceDetail', item)
+              }}>
               <Detail fill={item.riskLevel == 5 ? '#ED1766'
                 : item.riskLevel == 4 ? '#ED7823'
                   : item.riskLevel == 3 ? '#FFC90A'

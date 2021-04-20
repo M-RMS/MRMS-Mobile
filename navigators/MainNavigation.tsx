@@ -9,6 +9,7 @@ import Login from '~/screens/Login'
 import indexMaintainer from '~/screens/Dashboards/Maintainer'
 import indexAdmin from '~/screens/Dashboards/Admin'
 import indexSupervisor from '~/screens/Dashboards/Supervisor'
+import pieceDetail from '~/screens/PieceDetail/index'
 
 
 export { StackScreenProps } from '@react-navigation/stack'
@@ -77,6 +78,7 @@ export default () => {
         <Stack.Screen name='indexMaintainer' component={indexMaintainer} />
         <Stack.Screen name='indexSupervisor' component={indexSupervisor} />
         <Stack.Screen name='indexAdmin' component={indexAdmin} />
+        <Stack.Screen name='pieceDetail' component={pieceDetail} />
 
       </Stack.Navigator>
     </NavigationContainer>
