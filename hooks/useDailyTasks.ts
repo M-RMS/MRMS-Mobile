@@ -53,6 +53,14 @@ export interface propsTasks {
   maintenance: String
   isDone: boolean
   riskLevel: number
+  machineName?: string
+  machineGroup?: string
+  riskDescription?: string
+  daily?: string
+  weekly?: string
+  monthly?: string
+  halfYearly?: string
+  yearly?: string
 }
 
 export const data: propsTasks[] = [
@@ -64,7 +72,14 @@ export const data: propsTasks[] = [
     type: Type.Daily,
     maintenance: 'Yağları yenile',
     isDone: false,
-    riskLevel: 2
+    riskLevel: 2,
+    machineName: 'Lamel Makinesi',
+    machineGroup: 'Sarım Grubu',
+    daily: 'Yağları Yenile',
+    monthly: 'Somunları sık',
+    halfYearly: 'Demirleri cilala',
+    yearly: 'Gövdeyi değiştir',
+    riskDescription: 'Aşırı ısınmaya bağlı temasta ciltte kızarıklık',
   },
   {
     id: 2,
