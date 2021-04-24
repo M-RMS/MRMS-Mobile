@@ -27,11 +27,11 @@ export default () => {
         </Touchable>
 
         <Touchable
-          onPress={() => { console.warn('') }}>
+          onPress={() => { navigate('indexMaintainer') }}>
           <Home />
         </Touchable>
         <Touchable
-          onPress={() => { console.warn('') }}>
+          onPress={() => { navigate('profile') }}>
           <Profile />
         </Touchable>
       </Division>

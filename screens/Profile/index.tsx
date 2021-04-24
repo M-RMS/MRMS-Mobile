@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
-import { wp } from '~/utils/responsive'
-import TaskCard from './DailyTasks'
+import { hp, wp } from '~/utils/responsive'
 import Home from '~/SVGComponents/Home'
 import DotsVertical from '~/SVGComponents/DotsVertical'
 import RiskManagement from '~/SVGComponents/RiskManagement'
 import { View } from 'react-native'
 import TabNavMaintainer from '~/components/TabNavMaintainer'
+import Image from '~/components/Image'
+
 import {
   Menu,
   MenuOptions,
@@ -59,7 +60,7 @@ export default () => {
                 letterSpacing={0.33}
                 color='#ffffff'
               >
-                Hoşgeldiniz!
+                Profili Düzenle
             </Typography>
               <Typography
                 opacity={0.6}
@@ -101,15 +102,48 @@ export default () => {
             </View>
           </Touchable>
         </Division>
-        <Typography
-          marginTop={wp(3)}
-          marginLeft={wp(5)}
-          fontSize={wp(5)}
-          fontWeight='semi-bold'
-          color='#303E65'>
-          Günün Bakımları
-        </Typography>
-        <TaskCard />
+
+        <Division
+          width={wp(88)}
+          paddingHorizontal={wp(5)}
+          height={hp(70)}
+          backgroundColor='#ffffff'
+          borderRadius={wp(4)}
+          marginHorizontal={wp(6)}
+          marginTop={wp(10)}
+        >
+          <Division
+            alignItems='center'>
+
+
+            <Division
+              height={wp(30)}
+              width={wp(30)}
+              borderRadius={wp(30 / 2)}
+              marginTop={-wp(8)}
+            >
+              <Image
+                source={{ uri: 'http://placeimg.com/500/500/people?74161' }}
+                style={{
+                  width: wp(30),
+                  height: wp(30),
+                  borderRadius: wp(30 / 2),
+                  borderWidth: 5,
+                  borderColor: '#ffffff',
+                  flex: 1,
+                  resizeMode: 'cover'
+                }} />
+            </Division>
+          </Division>
+          <Typography>Adınız: </Typography>
+          <Typography>E-mail Adresiniz: </Typography>
+          <Typography>Yetkiniz: </Typography>
+
+          <Typography>Adınız: </Typography>
+          <Typography>Adınız: </Typography>
+          <Typography>Adınız: </Typography>
+
+        </Division>
 
 
 

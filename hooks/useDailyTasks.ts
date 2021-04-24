@@ -76,9 +76,7 @@ export const data: propsTasks[] = [
     machineName: 'Lamel Makinesi',
     machineGroup: 'Sarım Grubu',
     daily: 'Yağları Yenile',
-    monthly: 'Somunları sık',
     halfYearly: 'Demirleri cilala',
-    yearly: 'Gövdeyi değiştir',
     riskDescription: 'Aşırı ısınmaya bağlı temasta ciltte kızarıklık',
   },
   {
@@ -88,8 +86,13 @@ export const data: propsTasks[] = [
     pieceImageUrl: 'https://placeimg.com/640/480/nature',
     type: Type.Monthly,
     maintenance: 'Matkap ucunu törpüle',
-    isDone: false,
-    riskLevel: 4
+    isDone: true,
+    riskLevel: 4,
+    machineName: 'Basım Makinesi',
+    machineGroup: 'Delme Grubu',
+    monthly: 'Matkap ucunu törpüle',
+    halfYearly: 'Bakırları cilala',
+    riskDescription: 'El delinmesi',
   },
   {
     id: 3,
@@ -99,7 +102,13 @@ export const data: propsTasks[] = [
     type: Type.HalfYearly,
     maintenance: 'Silikonları Yenile',
     isDone: false,
-    riskLevel: 1
+    riskLevel: 1,
+    machineName: 'Lehim Makinesi',
+    machineGroup: 'Eritme Grubu',
+    daily: 'Yağları Yenile',
+    monthly: 'Somunları sık',
+    halfYearly: 'Silikonları Yenile',
+    riskDescription: 'Aşırı ısınmaya bağlı temasta ciltte kızarıklık',
   },
   {
     id: 4,
@@ -109,7 +118,12 @@ export const data: propsTasks[] = [
     type: Type.HalfYearly,
     maintenance: 'Parçayı Değiştir',
     isDone: false,
-    riskLevel: 5
+    riskLevel: 5,
+    machineName: 'Sarım Makinesi',
+    machineGroup: 'Sarmal Grubu',
+    halfYearly: 'Parçayı Değiştir',
+    yearly: 'Gövdeyi değiştir',
+    riskDescription: 'Uzuv kopması',
   },
   {
     id: 5,
@@ -118,8 +132,13 @@ export const data: propsTasks[] = [
     pieceImageUrl: 'https://placeimg.com/640/480/nature',
     type: Type.Daily,
     maintenance: 'Cilala',
-    isDone: false,
-    riskLevel: 3
+    isDone: true,
+    riskLevel: 3,
+    machineName: 'Yapıştırma Makinesi',
+    machineGroup: 'Yapışkan Grubu',
+    daily: 'Cilala',
+    halfYearly: 'Demirleri cilala',
+    riskDescription: 'Deri yapışması',
   },
   {
     id: 6,
@@ -129,7 +148,14 @@ export const data: propsTasks[] = [
     type: Type.Daily,
     maintenance: 'Hamuru Değiştir',
     isDone: false,
-    riskLevel: 2
+    riskLevel: 2,
+    machineName: 'Kağıt Makinesi',
+    machineGroup: 'Yapım Grubu',
+    daily: 'Hamuru Değiştir',
+    monthly: 'Somunları sık',
+    halfYearly: 'Demirleri cilala',
+    yearly: 'Gövdeyi değiştir',
+    riskDescription: 'Göz sulanması',
   },
   {
     id: 7,
@@ -138,8 +164,15 @@ export const data: propsTasks[] = [
     pieceImageUrl: 'https://placeimg.com/640/480/nature',
     type: Type.Daily,
     maintenance: 'Bile',
-    isDone: false,
-    riskLevel: 1
+    isDone: true,
+    riskLevel: 1,
+    machineName: 'Kesme Makinesi',
+    machineGroup: 'Kesim Grubu',
+    daily: 'Bile',
+    monthly: 'Somunları sık',
+    halfYearly: 'Demirleri cilala',
+    yearly: 'Gövdeyi değiştir',
+    riskDescription: 'Kulak çınlaması',
   },
 ]
 export default useDailyTasks

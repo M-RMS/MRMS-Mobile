@@ -45,7 +45,6 @@ export default () => {
 
   const [state, setState] = useState(1)
 
-
   let itemData: propsTasks = route.params
   useEffect(() => {
     console.log(itemData)
@@ -129,7 +128,20 @@ export default () => {
           color='#193254'>
           {itemData.pieceName}
         </Typography>
-        <Division alignSelf='stretch' borderBottomWidth={1} borderBottomColor='#d7dae1' marginVertical={wp(1)} />
+        <Division alignSelf='stretch' borderBottomWidth={1} borderBottomColor='#d7dae1' marginVertical={wp(2)} />
+        {itemData?.isDone ?
+          <Typography
+            fontSize={wp(3.3)}
+            color='#78BB43'>
+            Güncel bir bakımı bulunmamaktadır.
+        </Typography>
+          :
+          <Typography
+            fontSize={wp(3.3)}
+            color='#ED1766'>
+            Güncel bakımları bulunmaktadır.
+          </Typography>
+        }
       </Division>
       <Division
         height={wp(9)}
@@ -240,12 +252,79 @@ export default () => {
             <Division alignSelf='stretch' backgroundColor='#1FB9FC' height={state == 6 ? wp(1.5) : 0}
               borderTopLeftRadius={wp(1)} borderTopRightRadius={wp(1)} />
           </Touchable>
-
-
         </ScrollView>
       </Division>
-
       <Division alignSelf='stretch' borderBottomWidth={1} borderBottomColor='#d7dae1' />
+      <Division
+        alignSelf='stretch'
+        padding={wp(5)}
+        maxHeight={hp(30)}
+        backgroundColor='#ffffff'
+        marginHorizontal={wp(3)}
+        borderRadius={wp(4)}
+        marginVertical={wp(5)}
+        justifyContent='center'
+      >
+        <ScrollView>
+          {state == 1 ?
+            <Typography
+              fontSize={wp(3.3)}
+              letterSpacing={0.27}
+              color='#193254'
+            >{
+                itemData?.riskDescription ? itemData?.riskDescription : 'Henüz bir risk belirtilmemiştir.'
+              }
+            </Typography>
+            : state == 2 ?
+              <Typography
+                fontSize={wp(3.3)}
+                letterSpacing={0.27}
+                color='#193254'
+              >{
+                  itemData?.daily ? itemData?.daily : 'Günlük bakımı mevcut değildir.'
+                }
+              </Typography>
+              : state == 3 ?
+                <Typography
+                  fontSize={wp(3.3)}
+                  letterSpacing={0.27}
+                  color='#193254'
+                >{
+                    itemData?.weekly ? itemData?.weekly : 'Haftalık bakımı mevcut değildir.'
+                  }
+                </Typography>
+                : state == 4 ?
+                  <Typography
+                    fontSize={wp(3.3)}
+                    letterSpacing={0.27}
+                    color='#193254'
+                  >{
+                      itemData?.monthly ? itemData?.monthly : 'Aylık bakımı mevcut değildir.'
+                    }
+                  </Typography>
+                  : state == 5 ?
+                    <Typography
+                      fontSize={wp(3.3)}
+                      letterSpacing={0.27}
+                      color='#193254'
+                    >{
+                        itemData?.halfYearly ? itemData?.halfYearly : '6 Aylık bakımı mevcut değildir.'
+                      }
+                    </Typography>
+                    : state == 6 ?
+                      <Typography
+                        fontSize={wp(3.3)}
+                        letterSpacing={0.27}
+                        color='#193254'
+                      >{
+                          itemData?.yearly ? itemData?.yearly : 'Yıllık bakımı mevcut değildir.'
+                        }
+                      </Typography>
+                      : <Division />
+          }
+        </ScrollView>
+
+      </Division>
     </>
   )
 }
