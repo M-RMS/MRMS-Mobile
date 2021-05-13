@@ -258,7 +258,8 @@ export default () => {
       <Division
         alignSelf='stretch'
         padding={wp(5)}
-        maxHeight={hp(30)}
+        maxHeight={hp(40)}
+        minHeight={hp(35)}
         backgroundColor='#ffffff'
         marginHorizontal={wp(3)}
         borderRadius={wp(4)}

@@ -3,13 +3,14 @@ import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
 import { hp, wp } from '~/utils/responsive'
-import Home from '~/SVGComponents/Home'
 import DotsVertical from '~/SVGComponents/DotsVertical'
+import Camera from '~/SVGComponents/PhotoCamera'
 import RiskManagement from '~/SVGComponents/RiskManagement'
 import { View } from 'react-native'
 import TabNavMaintainer from '~/components/TabNavMaintainer'
 import Image from '~/components/Image'
-
+import { KeyboardAvoidingView, TextInput } from 'react-native'
+//import { TextInput } from 'react-native-paper'
 import {
   Menu,
   MenuOptions,
@@ -17,10 +18,12 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu'
 import { MenuProvider } from 'react-native-popup-menu'
+
 export default () => {
 
-  const [state, setState] = useState('uk')
-
+  const [pw, setPw] = useState('')
+  const [text, setText] = useState('')
+  const [pwVisibility, setPwVisibility] = useState(false)
   return (
     <>
       <MenuProvider>
@@ -95,6 +98,7 @@ export default () => {
                   <DotsVertical />
                 </Division>} />
                 <MenuOptions customStyles={optionsStyles}>
+                  <MenuOption onSelect={() => { }} text='Şifreni Değiştir' />
                   <MenuOption onSelect={() => { }} text='Yenile' />
                   <MenuOption onSelect={() => { }} text='Çıkış Yap' />
                 </MenuOptions>
@@ -106,7 +110,7 @@ export default () => {
         <Division
           width={wp(88)}
           paddingHorizontal={wp(5)}
-          height={hp(70)}
+          height={hp(67)}
           backgroundColor='#ffffff'
           borderRadius={wp(4)}
           marginHorizontal={wp(6)}
@@ -133,20 +137,93 @@ export default () => {
                   flex: 1,
                   resizeMode: 'cover'
                 }} />
+              <Touchable
+                backgroundColor='#ffffff'
+                width={wp(9)}
+                height={wp(9)}
+                borderRadius={wp(9) / 2}
+                justifyContent='center'
+                alignItems='center'
+                position='absolute'
+                bottom={wp(0)}
+                right={wp(0)}>
+
+                <Camera width={wp(6)} height={wp(6)} />
+              </Touchable>
             </Division>
           </Division>
-          <Typography>Adınız: </Typography>
-          <Typography>E-mail Adresiniz: </Typography>
-          <Typography>Yetkiniz: </Typography>
+          <KeyboardAvoidingView behavior='padding' enabled>
+            <Division
+              marginTop={wp(15)}
+              flexDirection='row'
+              justifyContent='space-between'>
+              <Typography
+                fontSize={wp(3.5)}
+                fontWeight='bold'
+              >
+                İsim
+                </Typography>
+              <TextInput
+                autoCapitalize='none'
+                style={{ paddingLeft: wp(4), fontSize: wp(3.5) }}
+                placeholderTextColor='#8898aa'
+                placeholder='Mert Mehmet Ezgin'
+                //secureTextEntry
+                onChangeText={(text) => {
+                  setPw(text)
+                }}
+              />
+            </Division>
+            <Division borderBottomWidth={1} borderColor='#A0A0A0' marginVertical={wp(5)} />
 
-          <Typography>Adınız: </Typography>
-          <Typography>Adınız: </Typography>
-          <Typography>Adınız: </Typography>
+            <Division
+              flexDirection='row'
+              justifyContent='space-between'>
+              <Typography
+                fontSize={wp(3.5)}
+                fontWeight='bold'
+              >
+                Email
+                </Typography>
+              <TextInput
+                autoCapitalize='none'
+                style={{ paddingLeft: wp(4), fontSize: wp(3.5) }}
+                placeholderTextColor='#8898aa'
+                placeholder='mert@mrms.com'
+                //secureTextEntry
+                onChangeText={(text) => {
+                  setPw(text)
+                }}
+              />
+            </Division>
 
+            <Division borderBottomWidth={1} borderColor='#A0A0A0' marginVertical={wp(5)} />
+
+            <Division
+              flexDirection='row'
+              justifyContent='space-between'>
+              <Typography
+                fontSize={wp(3.5)}
+                fontWeight='bold'
+              >
+                Yetki
+                </Typography>
+              <TextInput
+                autoCapitalize='none'
+                style={{ paddingLeft: wp(4), fontSize: wp(3.5) }}
+                placeholderTextColor='#8898aa'
+                placeholder='Bakımcı'
+                editable={false}
+                //secureTextEntry
+                onChangeText={(text) => {
+                  setPw(text)
+                }}
+              />
+            </Division>
+            <Division borderBottomWidth={1} borderColor='#A0A0A0' marginVertical={wp(3)} />
+
+          </KeyboardAvoidingView>
         </Division>
-
-
-
       </MenuProvider>
       <TabNavMaintainer />
     </>
