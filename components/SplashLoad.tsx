@@ -5,7 +5,7 @@ import Logo from '../components/Logo'
 const SplashLoad = () => {
   return (
     <ImageBackground
-      source={require('~/assets/images/onboard.png')}
+      source={require('~/assets/images/Splash.jpg')}
       style={{ width: '100%', height: '100%' }}
     />
   )

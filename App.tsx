@@ -79,12 +79,12 @@ export default function App() {
     </>
 
   ) : (
-      <View style={{ flex: 1 }}>
-        {/*<SplashLoad />*/}
-        <AppLoading
-          startAsync={useResources}
-          onFinish={() => setDataLoaded(true)}
-        />
-      </View>
-    )
+    <View style={{ flex: 1 }}>
+      <SplashLoad />
+      <AppLoading
+        startAsync={useResources}
+        onFinish={() => setDataLoaded(true)}
+      />
+    </View>
+  )
 }

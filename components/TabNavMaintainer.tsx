@@ -7,6 +7,7 @@ import Home from '~/SVGComponents/Home'
 import Categories from '~/SVGComponents/Categories'
 import Touchable from './Touchable'
 
+
 export default () => {
   const { navigate } = useNavigation()
   return (

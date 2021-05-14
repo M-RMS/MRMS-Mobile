@@ -12,6 +12,7 @@ import indexSupervisor from '~/screens/Dashboards/Supervisor'
 import pieceDetail from '~/screens/PieceDetail'
 import profile from '~/screens/Profile'
 import search from '~/screens/Search'
+import splash from '~/screens/Splash'
 
 
 export { StackScreenProps } from '@react-navigation/stack'
@@ -83,6 +84,7 @@ export default () => {
         <Stack.Screen name='pieceDetail' component={pieceDetail} />
         <Stack.Screen name='profile' component={profile} />
         <Stack.Screen name='search' component={search} />
+        <Stack.Screen name='splash' component={splash} />
 
       </Stack.Navigator>
     </NavigationContainer>
