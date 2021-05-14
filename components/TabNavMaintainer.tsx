@@ -22,7 +22,7 @@ export default () => {
         alignItems='center'
         justifyContent='space-evenly'>
         <Touchable
-          onPress={() => { console.warn('') }}>
+          onPress={() => { navigate('search') }}>
           <Categories />
         </Touchable>
 

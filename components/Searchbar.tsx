@@ -2,7 +2,7 @@ import React from 'react'
 import { TextInput, TextInputProps } from 'react-native'
 
 import Division from './Division'
-import Search from './SVGComponents/Search'
+import Search from '../SVGComponents/Search'
 import { hp, wp } from '~/utils/responsive'
 import useTheme from '~/hooks/useTheme'
 import Touchable from './Touchable'
@@ -28,7 +28,7 @@ const SearchBar: React.StatelessComponent<TextInputProps> = (
       borderRadius={wp(8)}
       backgroundColor='white'>
       <TextInput
-        editable={false}
+        editable={true}
         allowFontScaling={false}
         style={{
           flex: 1,
@@ -41,7 +41,7 @@ const SearchBar: React.StatelessComponent<TextInputProps> = (
       <Touchable
         position='absolute'
         right={0}
-        backgroundColor={'#A4998D'/*#185D81*/}
+        backgroundColor={'#185D81'/*#185D81*/}
         width={wp(15)}
         height={wp(12)}
         borderBottomRightRadius={wp(8)}

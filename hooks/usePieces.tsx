@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react'
 
-export type TasksRequestObject = {
-  data: propsTasks[]
+export type PieceRequestObject = {
+  data: propsPieces[]
   fetched?: boolean
   fetching?: boolean
   error?: boolean
 }
 
-const useDailyTasks = (skeletonCount?: number | undefined) => {
-  const initialValues: TasksRequestObject = {
+const usePieces = (skeletonCount?: number | undefined) => {
+  const initialValues: PieceRequestObject = {
     data: skeletonCount ? Array(skeletonCount).fill(0) : [],
     fetched: false,
     fetching: true,
     error: false,
   }
 
-  const [request, setRequest] = useState<TasksRequestObject>(
+  const [request, setRequest] = useState<PieceRequestObject>(
     initialValues
   )
 
@@ -44,7 +44,7 @@ enum Type {
 }
 
 
-export interface propsTasks {
+export interface propsPieces {
   id: number
   pieceId: number
   pieceName: String
@@ -175,4 +175,4 @@ export const data: propsTasks[] = [
     riskDescription: 'Kulak çınlaması',
   },
 ]
-export default useDailyTasks
+export default usePieces
