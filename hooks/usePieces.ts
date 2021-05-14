@@ -63,7 +63,7 @@ export interface propsPieces {
   yearly?: string
 }
 
-export const data: propsTasks[] = [
+export const data: propsPieces[] = [
   {
     id: 1,
     pieceId: 2,
