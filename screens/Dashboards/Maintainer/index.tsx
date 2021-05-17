@@ -76,7 +76,8 @@ export default () => {
             width={wp(100)}
             alignItems='center'
             position='absolute'
-            bottom={-wp(6)}>
+            bottom={-wp(6)}
+          >
           </Division>
           <Touchable
             activeOpacity={1}
@@ -110,9 +111,6 @@ export default () => {
           Günün Bakımları
         </Typography>
         <TaskCard />
-
-
-
       </MenuProvider>
       <TabNavMaintainer />
     </>
