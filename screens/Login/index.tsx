@@ -98,7 +98,7 @@ export default () => {
             borderColor='#ffffff'
             onPress={() => {
               setDevMode(!devMode)
-              devMode ? console.warn('Development mode has been deactived!') : console.warn('Development mode has benn actived!')
+              devMode ? console.warn('Development mode has been deactived!') : console.warn('Development mode has been actived!')
             }}>
             <Typography
               textAlign='center'
