@@ -46,9 +46,7 @@ export default () => {
   const [state, setState] = useState(1)
 
   let itemData: propsTasks = route.params
-  useEffect(() => {
-    console.log(itemData)
-  }, [])
+
   return (
 
     <>
