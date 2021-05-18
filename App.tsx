@@ -16,13 +16,8 @@ import Division from '~/components/Division'
 import StatusBar from '~/components/StatusBar'
 import useResources from '~/hooks/useResources'
 import MainNavigation from '~/navigators/MainNavigation'
-import userReducer from '~/redux/reducers/reducer'
-import IdReducer from '~/redux/reducers/IdReducer'
-import AdvFieldReducer from '~/redux/reducers/AdvFieldReducer'
-import FilterMapReducer from '~/redux/reducers/FilterMapReducer'
-import RandomReducer from '~/redux/reducers/RandomReducer'
-import SortDesignsReducer from '~/redux/reducers/SortDesignsReducer'
-import FilterDesignsReducer from '~/redux/reducers/FilterDesignsReducer'
+import RoleReducer from '~/redux/reducers/RoleReducer'
+
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -45,15 +40,12 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-  /*
-    User: userReducer,
-    Random: RandomReducer,
-    IdPass: IdReducer,
-    FieldPass: AdvFieldReducer,
-    FilterMap: FilterMapReducer,
-    SortDesigns: SortDesignsReducer,
-    FilterDesigns:FilterDesignsReducer
-  */
+
+
+  Role: RoleReducer,
+
+
+
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -61,21 +53,25 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false)
 
-
-  //let persistor = persistStore(store)
+  const store = createStore(persistedReducer, applyMiddleware(thunk))
+  let persistor = persistStore(store)
 
 
   return dataLoaded ? (
 
     <>
-      <SafeAreaProvider>
-        <ThemeManager>
-          <Division backgroundColor='white' flex={1}>
-            <StatusBar barStyle='light-content' />
-            <MainNavigation />
-          </Division>
-        </ThemeManager>
-      </SafeAreaProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <SafeAreaProvider>
+            <ThemeManager>
+              <Division backgroundColor='white' flex={1}>
+                <StatusBar barStyle='light-content' />
+                <MainNavigation />
+              </Division>
+            </ThemeManager>
+          </SafeAreaProvider>
+        </PersistGate>
+      </Provider>
     </>
 
   ) : (

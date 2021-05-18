@@ -12,5 +12,7 @@ export const RANDOM_NUMBER = 'RANDOM_NUMBER'
 export const FILTER_MAP = 'FILTER_MAP'
 /* SORT DESIGNS */
 export const SORT_DESIGNS = 'SORT_DESIGNS'
-/* FILTER DESIGNS*/
+/* FILTER DESIGNS */
 export const FILTER_DESIGNS = 'FILTER_DESIGNS'
+/* ROLE */
+export const ROLE = 'ROLE'

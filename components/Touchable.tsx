@@ -19,6 +19,7 @@ const Touchable = ({
   withBorderRadius,
   children,
   style,
+  onLongPress,
   onPress,
   ...rest
 }: EnhancedTouchable) => {

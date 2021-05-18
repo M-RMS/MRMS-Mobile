@@ -5,6 +5,7 @@ import Touchable from '~/components/Touchable'
 import { wp } from '~/utils/responsive'
 import TaskCard from './DailyTasks'
 import Home from '~/SVGComponents/Home'
+import { useNavigation } from '@react-navigation/native'
 import DotsVertical from '~/SVGComponents/DotsVertical'
 import RiskManagement from '~/SVGComponents/RiskManagement'
 import { View } from 'react-native'
@@ -17,6 +18,7 @@ import {
 } from 'react-native-popup-menu'
 import { MenuProvider } from 'react-native-popup-menu'
 export default () => {
+  const { navigate } = useNavigation()
 
   const [state, setState] = useState('uk')
 
@@ -28,9 +30,7 @@ export default () => {
           alignSelf='stretch'
           backgroundColor='#1FB9FC'
           justifyContent='center'
-          alignItems='flex-start'
-
-        >
+          alignItems='flex-start'>
           <Division
             marginTop={wp(3)}
             flexDirection='row'
@@ -96,7 +96,7 @@ export default () => {
                 </Division>} />
                 <MenuOptions customStyles={optionsStyles}>
                   <MenuOption onSelect={() => { }} text='Yenile' />
-                  <MenuOption onSelect={() => { }} text='Çıkış Yap' />
+                  <MenuOption onSelect={() => { navigate('Login') }} text='Çıkış Yap' />
                 </MenuOptions>
               </Menu>
             </View>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
@@ -7,12 +7,19 @@ import { useNavigation } from '@react-navigation/native'
 import { TextInput } from 'react-native-paper'
 import RiskManagement from '~/SVGComponents/RiskManagement'
 import ForgotPassword from '~/SVGComponents/ForgotPassword'
-import { KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native'
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Platform, TouchableOpacity } from 'react-native'
 import { Keyboard } from 'react-native-ui-lib'
+import { useDispatch, useSelector } from 'react-redux'
+import roleAction from '~/redux/actions/roleAction'
 export default () => {
+  const dispatch = useDispatch()
+  const yetki = useSelector((state) => state.Role.str)
   const { navigate } = useNavigation()
   const [text, setText] = useState('')
+  const [un, setUn] = useState('')
+  const [pw, setPw] = useState('')
   const [devMode, setDevMode] = useState(false)
+
   return (
     <Division
       zIndex={1}
@@ -60,42 +67,44 @@ export default () => {
                 mode='outlined'
                 returnKeyType={'next'}
                 label='Email'
-                labelColor='#1FB9FC'
-                value={text}
+                value={un}
                 underlineColor='#1FB9FC'
                 selectionColor='#1FB9FC'
                 autoCapitalize='none'
-                theme={{ colors: { primary: '#1FB9FC', underlineColor: '#1FB9FC', background: '#ffffff' } }}
-                onChangeText={text => setText(text)}
+                theme={{ colors: { primary: '#1FB9FC', background: '#ffffff' } }}
+                onChangeText={text => setUn(text)}
               />
               <Division marginVertical={wp(2)} />
               <TextInput
                 mode='outlined'
                 returnKeyType={'done'}
                 label='Şifre'
-                value={text}
+                value={pw}
                 underlineColor='#1FB9FC'
                 selectionColor='#1FB9FC'
                 autoCapitalize='none'
                 secureTextEntry={true}
-                onChangeText={text => setText(text)}
-                theme={{ colors: { primary: '#1FB9FC', underlineColor: '#1FB9FC', background: '#ffffff' } }}
+                onChangeText={text => setPw(text)}
+                theme={{ colors: { primary: '#1FB9FC', background: '#ffffff' } }}
               />
             </>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
         <Division marginVertical={wp(2)} />
-        <Touchable
-          width={wp(42)}
-          height={hp(7)}
-          marginHorizontal={wp(42 / 2)}
-          alignItems='center'
-          justifyContent='center'
-          borderRadius={wp(10)}
-          backgroundColor='#1FB9FC'
-          borderWidth={3}
-          borderColor='#ffffff'
-          onPress={() => {
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={{
+            width: wp(42),
+            height: hp(7),
+            marginHorizontal: wp(42 / 2),
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: wp(10),
+            backgroundColor: '#1FB9FC',
+            borderWidth: 3,
+            borderColor: '#ffffff'
+          }}
+          onLongPress={() => {
             setDevMode(!devMode)
             devMode ? console.warn('Developer mode has been deactived!') : console.warn('Developer mode has been actived!')
           }}>
@@ -106,7 +115,7 @@ export default () => {
             fontWeight='bold'>
             Giriş Yap
             </Typography>
-        </Touchable>
+        </TouchableOpacity>
       </Division>
       {devMode ?
         <Division
@@ -118,6 +127,7 @@ export default () => {
           <Touchable
             backgroundColor='#000000'
             onPress={() => {
+              dispatch(roleAction('Admin'))
               navigate('indexAdmin')
             }}>
             <Typography
@@ -129,6 +139,7 @@ export default () => {
           </Touchable>
           <Touchable
             onPress={() => {
+              dispatch(roleAction('Supervisor'))
               navigate('indexSupervisor')
             }}>
             <Typography
@@ -141,6 +152,7 @@ export default () => {
           </Touchable>
           <Touchable
             onPress={() => {
+              dispatch(roleAction('Maintainer'))
               navigate('indexMaintainer')
             }}>
             <Typography
@@ -154,6 +166,8 @@ export default () => {
         </Division> : <Division />
       }
       <Division
+        zIndex={-1}
+        justifyContent='flex-end'
         alignItems='flex-start'
         flex={1}
         width={wp(100)}>
@@ -162,9 +176,10 @@ export default () => {
           height={wp(60)}
           borderRadius={wp(60 / 2)}
           left={wp(-30)}
+          bottom={wp(-30)}
           justifyContent='center'
           alignItems='center'
-          backgroundColor='#1FB9FC'>
+          backgroundColor='#1CB9FC'>
           <Touchable
             marginLeft={wp(20)}
             marginBottom={wp(20)}>
@@ -174,8 +189,4 @@ export default () => {
       </Division>
     </Division>
   )
-
 }
-/*
-
-*/

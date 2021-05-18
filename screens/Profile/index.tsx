@@ -10,6 +10,8 @@ import { View } from 'react-native'
 import TabNavMaintainer from '~/components/TabNavMaintainer'
 import Image from '~/components/Image'
 import { KeyboardAvoidingView, TextInput } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
+import TabNavSupervisor from '~/components/TabNavSupervisor'
 //import { TextInput } from 'react-native-paper'
 import {
   Menu,
@@ -20,7 +22,7 @@ import {
 import { MenuProvider } from 'react-native-popup-menu'
 
 export default () => {
-
+  const yetki = useSelector((state) => state.Role.str)
   const [pw, setPw] = useState('')
   const [text, setText] = useState('')
   const [pwVisibility, setPwVisibility] = useState(false)
@@ -225,7 +227,7 @@ export default () => {
           </KeyboardAvoidingView>
         </Division>
       </MenuProvider>
-      <TabNavMaintainer />
+      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <Division />}
     </>
   )
 }
