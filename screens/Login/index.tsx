@@ -5,60 +5,104 @@ import Touchable from '~/components/Touchable'
 import { hp, wp } from '~/utils/responsive'
 import { useNavigation } from '@react-navigation/native'
 import { TextInput } from 'react-native-paper'
-import { KeyboardAvoidingView } from 'react-native'
+import RiskManagement from '~/SVGComponents/RiskManagement'
+import { KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native'
+import { Keyboard } from 'react-native-ui-lib'
 export default () => {
   const { navigate } = useNavigation()
   const [text, setText] = useState('')
   return (
     <Division
       flex={1}
-      justifyContent='center'
-      alignItems='center'
-      paddingHorizontal={wp(5)}>
+      backgroundColor='#ffffff'
+      paddingHorizontal={wp(5)}
+      alignItems='center'>
       <Division
-        width={wp(90)}
-      >
-        <TextInput
-          mode='outlined'
-          returnKeyType={'next'}
-          label='Email'
-          labelColor='#D41932'
-          value={text}
-          underlineColor='#D41932'
-          selectionColor='#D41932'
-          autoCapitalize='none'
-          theme={{ colors: { primary: '#D41932', underlineColor: '#D41932' } }}
-          onChangeText={text => setText(text)}
-        />
-        <Division marginVertical={wp(2)} />
-        <TextInput
-          mode='outlined'
-          returnKeyType={'done'}
-          label='Password'
-          value={text}
-          underlineColor='#D41932'
-          selectionColor='#D41932'
-          autoCapitalize='none'
-          secureTextEntry={true}
-          onChangeText={text => setText(text)}
-          theme={{ colors: { primary: '#D41932', underlineColor: '#D41932' } }}
-        />
+        marginTop={-wp(70)}
+        width={wp(140)}
+        height={wp(125)}
+        borderRadius={wp(140 / 2)}
+        backgroundColor='#1FB9FC' />
+      <Division
+        position='absolute'
+        top={wp(35 / 2)}>
+        <RiskManagement width={wp(20)} height={wp(20)} fill={'#ffffff'} />
+      </Division>
+      <Division
+        marginTop={wp(5)}>
+        <Typography
+          color='#1FB9FC'
+          fontSize={wp(6)}
+          letterSpacing={wp(0.2)}
+          fontWeight='bold'
+          textAlign='center'>
+          Hoşgeldiniz!
+          </Typography>
+        <Typography
+          color='#1FB9FC'
+          letterSpacing={wp(0.2)}
+          fontSize={wp(3.5)}
+          fontWeight='semi-bold'
+          textAlign='center'>
+          Lütfen Giriş Yapınız...
+          </Typography>
+      </Division>
+      <Division
+        marginTop={wp(5)}
+        width={wp(84)}>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <>
+              <TextInput
+                mode='outlined'
+                returnKeyType={'next'}
+                label='Email'
+                labelColor='#1FB9FC'
+                value={text}
+                underlineColor='#1FB9FC'
+                selectionColor='#1FB9FC'
+                autoCapitalize='none'
+                theme={{ colors: { primary: '#1FB9FC', underlineColor: '#1FB9FC', background: '#ffffff' } }}
+                onChangeText={text => setText(text)}
+              />
+              <Division marginVertical={wp(2)} />
+              <TextInput
+                mode='outlined'
+                returnKeyType={'done'}
+                label='Şifre'
+                value={text}
+                underlineColor='#1FB9FC'
+                selectionColor='#1FB9FC'
+                autoCapitalize='none'
+                secureTextEntry={true}
+                onChangeText={text => setText(text)}
+                theme={{ colors: { primary: '#1FB9FC', underlineColor: '#1FB9FC', background: '#ffffff' } }}
+              />
+            </>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
         <Division marginVertical={wp(2)} />
         <Touchable
-          width={wp(60)}
+          width={wp(42)}
           height={hp(7)}
-          borderWidth={1}
+          marginHorizontal={wp(42 / 2)}
           alignItems='center'
           justifyContent='center'
-          marginHorizontal={wp(15)}>
+          borderRadius={wp(10)}
+          backgroundColor='#1FB9FC'>
           <Typography
-            textAlign='center'>
+            textAlign='center'
+            fontSize={wp(4)}
+            color='#ffffff'
+            fontWeight='bold'>
             Giriş Yap
             </Typography>
         </Touchable>
       </Division>
       <Division
+        position='absolute'
         flexDirection='row'
+        bottom={0}
         justifyContent='space-between'
         width={wp(90)}>
         <Touchable
