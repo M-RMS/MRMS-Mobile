@@ -3,13 +3,16 @@ import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
 import { wp } from '~/utils/responsive'
-import Home from '~/SVGComponents/Home'
+import Crown from '~/SVGComponents/Crown'
 import DotsVertical from '~/SVGComponents/DotsVertical'
 import RiskManagement from '~/SVGComponents/RiskManagement'
 import { View } from 'react-native'
 import TabNavSupervisor from '~/components/TabNavSupervisor'
 import { useNavigation } from '@react-navigation/native'
 import { Modal, RefreshControl } from 'react-native'
+import GradientButton from 'react-native-gradient-buttons'
+import Image from '~/components/Image'
+
 import {
   Menu,
   MenuOptions,
@@ -56,22 +59,22 @@ export default () => {
     { name: 'Mehmet Denizli', score: 0, img: 'http://placeimg.com/500/500/people?74168' },
   ]
   const WeeklyMaintainerData = [
-    { name: 'Mustafa Albayrak', score: 5, img: 'http://placeimg.com/500/500/people?74162' },
-    { name: 'Cengiz Uzun', score: 4, img: 'http://placeimg.com/500/500/people?74163' },
-    { name: 'Ali Asım Saran', score: 3, img: 'http://placeimg.com/500/500/people?74164' },
-    { name: 'Enes Kayıkçı', score: 2, img: 'http://placeimg.com/500/500/people?74165' },
-    { name: 'Serkan Yalçın', score: 1, img: 'http://placeimg.com/500/500/people?74166' },
-    { name: 'Ufuk Mert Mercan', score: 1, img: 'http://placeimg.com/500/500/people?74167' },
-    { name: 'Mehmet Denizli', score: 0, img: 'http://placeimg.com/500/500/people?74168' },
+    { name: 'Mustafa Albayrak', score: 50, img: 'http://placeimg.com/500/500/people?74162' },
+    { name: 'Cengiz Uzun', score: 40, img: 'http://placeimg.com/500/500/people?74163' },
+    { name: 'Ali Asım Saran', score: 30, img: 'http://placeimg.com/500/500/people?74164' },
+    { name: 'Enes Kayıkçı', score: 20, img: 'http://placeimg.com/500/500/people?74165' },
+    { name: 'Serkan Yalçın', score: 10, img: 'http://placeimg.com/500/500/people?74166' },
+    { name: 'Ufuk Mert Mercan', score: 10, img: 'http://placeimg.com/500/500/people?74167' },
+    { name: 'Mehmet Denizli', score: 4, img: 'http://placeimg.com/500/500/people?74168' },
   ]
   const MonthlyMaintainerData = [
-    { name: 'Mustafa Albayrak', score: 5, img: 'http://placeimg.com/500/500/people?74162' },
-    { name: 'Cengiz Uzun', score: 4, img: 'http://placeimg.com/500/500/people?74163' },
-    { name: 'Ali Asım Saran', score: 3, img: 'http://placeimg.com/500/500/people?74164' },
-    { name: 'Enes Kayıkçı', score: 2, img: 'http://placeimg.com/500/500/people?74165' },
-    { name: 'Serkan Yalçın', score: 1, img: 'http://placeimg.com/500/500/people?74166' },
-    { name: 'Ufuk Mert Mercan', score: 1, img: 'http://placeimg.com/500/500/people?74167' },
-    { name: 'Mehmet Denizli', score: 0, img: 'http://placeimg.com/500/500/people?74168' },
+    { name: 'Mustafa Albayrak', score: 500, img: 'http://placeimg.com/500/500/people?74162' },
+    { name: 'Cengiz Uzun', score: 400, img: 'http://placeimg.com/500/500/people?74163' },
+    { name: 'Ali Asım Saran', score: 300, img: 'http://placeimg.com/500/500/people?74164' },
+    { name: 'Enes Kayıkçı', score: 200, img: 'http://placeimg.com/500/500/people?74165' },
+    { name: 'Serkan Yalçın', score: 100, img: 'http://placeimg.com/500/500/people?74166' },
+    { name: 'Ufuk Mert Mercan', score: 100, img: 'http://placeimg.com/500/500/people?74167' },
+    { name: 'Mehmet Denizli', score: 10, img: 'http://placeimg.com/500/500/people?74168' },
   ]
 
   return (
@@ -161,6 +164,7 @@ export default () => {
             justifyContent='center'
             onPress={() => {
               setLoop('d')
+              //navigate('ozgur')
             }}>
             <Typography
               letterSpacing={0.2}
@@ -211,12 +215,30 @@ export default () => {
             </Typography>
           </Touchable>
         </Division>
+
         <Division
           borderColor='#A7A9B3'
           borderBottomWidth={1}
           marginHorizontal={wp(5)}
         />
-        {loop == 'd' ? <ScrollView style={{ zIndex: -9999, marginTop: wp(9), paddingHorizontal: wp(5) }} showsVerticalScrollIndicator={false}
+        <Touchable
+          marginTop={wp(5)}
+          marginHorizontal={wp(5)}
+          width={wp(90)}
+          height={wp(15)}
+          backgroundColor='#f20c0c'
+          borderRadius={wp(8)}
+          justifyContent='center'
+          alignItems='center'>
+          <Typography
+            fontSize={wp(5)}
+            fontWeight='bold'
+            color='#ffffff'
+            textAlign='center'>
+            Arızaları Görüntüle
+          </Typography>
+        </Touchable>
+        {loop == 'd' ? <ScrollView style={{ zIndex: -9999, marginTop: wp(5), paddingHorizontal: wp(5) }} showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl colors={['#222F5A']} refreshing={refreshing} onRefresh={onRefresh} />
           } >
@@ -227,6 +249,12 @@ export default () => {
             alignItems='center'
             justifyContent='center'
             borderRadius={wp(10)}>
+            <Typography
+              fontSize={wp(4)}
+              color='#303E65'
+              fontWeight='semi-bold'>
+              Bakımlar
+            </Typography>
             <PieChart
               data={dataDaily}
               width={wp(90)}
@@ -237,17 +265,386 @@ export default () => {
             />
           </Division>
           <Division
-            marginTop={wp(5)}
+            marginTop={wp(15)}
             width={wp(90)}
             height={wp(50)}
             backgroundColor='#ffffff'
-            alignItems='center'
-            justifyContent='center'
             borderRadius={wp(10)}>
-
+            <Division
+              width={wp(90)}>
+              <Division
+                alignItems='center'
+                flexDirection='row'
+                justifyContent='space-between'
+                paddingHorizontal={wp(10)}
+                paddingVertical={wp(2)}>
+                <Typography
+                  color='#FFC90A'
+                  fontSize={wp(6)}>
+                  1.
+                </Typography>
+                <Division marginHorizontal={wp(3)} />
+                <Division
+                  left={wp(35)}
+                  top={-wp(10)}
+                  position='absolute'
+                  height={wp(20)}
+                  width={wp(20)}
+                  borderRadius={wp(20 / 2)}>
+                  <Image
+                    source={{ uri: DailyMaintainerData[0].img }}
+                    style={{
+                      width: wp(20),
+                      height: wp(20),
+                      borderRadius: wp(20 / 2),
+                      borderWidth: 5,
+                      borderColor: '#FFC90A',
+                      flex: 1,
+                      resizeMode: 'cover'
+                    }} />
+                  <Crown height={wp(12)} width={wp(12)} style={{ position: 'absolute', top: -wp(6), marginHorizontal: wp(4) }} />
+                </Division>
+                <Division marginHorizontal={wp(3)} />
+                <Typography
+                  color='#FFC90A'
+                  fontSize={wp(5)}>
+                  {'Score: ' + DailyMaintainerData[0].score}
+                </Typography>
+              </Division>
+            </Division>
+            <Division
+              flex={1}
+              justifyContent='space-around'>
+              {
+                DailyMaintainerData.slice(1, 4).map(item => {
+                  return (
+                    <Division
+                      marginHorizontal={wp(3)}
+                      flexDirection='row'
+                      justifyContent='space-around'
+                      alignItems='center'
+                      marginTop={wp(1)}>
+                      <Division
+                        alignItems='center'
+                        width={wp(18)}
+                        flexDirection='row'>
+                        <Typography
+                          color='#303E65'
+                          fontSize={wp(4)}
+                          fontWeight='semi-bold'>
+                          {DailyMaintainerData.indexOf(item) + 1 + '.'}
+                        </Typography>
+                        <Division
+                          marginLeft={wp(2)}
+                          height={wp(8)}
+                          width={wp(8)}
+                          borderRadius={wp(8 / 2)}>
+                          <Image
+                            source={{ uri: DailyMaintainerData[0].img }}
+                            style={{
+                              width: wp(8),
+                              height: wp(8),
+                              borderRadius: wp(8 / 2),
+                              borderWidth: 1,
+                              flex: 1,
+                              resizeMode: 'cover'
+                            }} />
+                        </Division>
+                      </Division>
+                      <Typography
+                        color='#000000'
+                        fontSize={wp(4)}
+                        fontWeight='semi-bold'
+                        width={wp(40)}>
+                        {item.name}
+                      </Typography>
+                      <Typography
+                        color='#000000'
+                        fontSize={wp(4)}
+                        fontWeight='semi-bold'
+                        width={wp(10)}>
+                        {item.score}
+                      </Typography>
+                    </Division>
+                  )
+                })
+              }
+            </Division>
           </Division>
-
-        </ScrollView> : <Division />}
+          <Division marginVertical={wp(13)} />
+        </ScrollView> : loop == 'w' ?
+          <ScrollView style={{ zIndex: -9999, marginTop: wp(5), paddingHorizontal: wp(5) }} showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl colors={['#222F5A']} refreshing={refreshing} onRefresh={onRefresh} />
+            } >
+            <Division
+              width={wp(90)}
+              height={wp(50)}
+              backgroundColor='#ffffff'
+              alignItems='center'
+              justifyContent='center'
+              borderRadius={wp(10)}>
+              <Typography
+                fontSize={wp(4)}
+                color='#303E65'
+                fontWeight='semi-bold'>
+                Bakımlar
+          </Typography>
+              <PieChart
+                data={dataWeekly}
+                width={wp(90)}
+                height={wp(40)}
+                chartConfig={chartConfig}
+                accessor='billboards'
+                backgroundColor='transparent'
+              />
+            </Division>
+            <Division
+              marginTop={wp(15)}
+              width={wp(90)}
+              height={wp(50)}
+              backgroundColor='#ffffff'
+              borderRadius={wp(10)}>
+              <Division
+                width={wp(90)}>
+                <Division
+                  alignItems='center'
+                  flexDirection='row'
+                  justifyContent='space-between'
+                  paddingHorizontal={wp(10)}
+                  paddingVertical={wp(2)}>
+                  <Typography
+                    color='#FFC90A'
+                    fontSize={wp(6)}>
+                    1.
+              </Typography>
+                  <Division marginHorizontal={wp(3)} />
+                  <Division
+                    left={wp(35)}
+                    top={-wp(10)}
+                    position='absolute'
+                    height={wp(20)}
+                    width={wp(20)}
+                    borderRadius={wp(20 / 2)}>
+                    <Image
+                      source={{ uri: WeeklyMaintainerData[0].img }}
+                      style={{
+                        width: wp(20),
+                        height: wp(20),
+                        borderRadius: wp(20 / 2),
+                        borderWidth: 5,
+                        borderColor: '#FFC90A',
+                        flex: 1,
+                        resizeMode: 'cover'
+                      }} />
+                    <Crown height={wp(12)} width={wp(12)} style={{ position: 'absolute', top: -wp(6), marginHorizontal: wp(4) }} />
+                  </Division>
+                  <Division marginHorizontal={wp(3)} />
+                  <Typography
+                    color='#FFC90A'
+                    fontSize={wp(5)}>
+                    {'Score: ' + WeeklyMaintainerData[0].score}
+                  </Typography>
+                </Division>
+              </Division>
+              <Division
+                flex={1}
+                justifyContent='space-around'>
+                {
+                  WeeklyMaintainerData.slice(1, 4).map(item => {
+                    return (
+                      <Division
+                        marginHorizontal={wp(3)}
+                        flexDirection='row'
+                        justifyContent='space-around'
+                        alignItems='center'
+                        marginTop={wp(1)}>
+                        <Division
+                          alignItems='center'
+                          width={wp(18)}
+                          flexDirection='row'>
+                          <Typography
+                            color='#303E65'
+                            fontSize={wp(4)}
+                            fontWeight='semi-bold'>
+                            {WeeklyMaintainerData.indexOf(item) + 1 + '.'}
+                          </Typography>
+                          <Division
+                            marginLeft={wp(2)}
+                            height={wp(8)}
+                            width={wp(8)}
+                            borderRadius={wp(8 / 2)}>
+                            <Image
+                              source={{ uri: WeeklyMaintainerData[0].img }}
+                              style={{
+                                width: wp(8),
+                                height: wp(8),
+                                borderRadius: wp(8 / 2),
+                                borderWidth: 1,
+                                flex: 1,
+                                resizeMode: 'cover'
+                              }} />
+                          </Division>
+                        </Division>
+                        <Typography
+                          color='#000000'
+                          fontSize={wp(4)}
+                          fontWeight='semi-bold'
+                          width={wp(40)}>
+                          {item.name}
+                        </Typography>
+                        <Typography
+                          color='#000000'
+                          fontSize={wp(4)}
+                          fontWeight='semi-bold'
+                          width={wp(10)}>
+                          {item.score}
+                        </Typography>
+                      </Division>
+                    )
+                  })
+                }
+              </Division>
+            </Division>
+            <Division marginVertical={wp(13)} />
+          </ScrollView>
+          :
+          <ScrollView style={{ zIndex: -9999, marginTop: wp(5), paddingHorizontal: wp(5) }} showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl colors={['#222F5A']} refreshing={refreshing} onRefresh={onRefresh} />
+            } >
+            <Division
+              width={wp(90)}
+              height={wp(50)}
+              backgroundColor='#ffffff'
+              alignItems='center'
+              justifyContent='center'
+              borderRadius={wp(10)}>
+              <Typography
+                fontSize={wp(4)}
+                color='#303E65'
+                fontWeight='semi-bold'>
+                Bakımlar
+            </Typography>
+              <PieChart
+                data={dataMonthly}
+                width={wp(90)}
+                height={wp(40)}
+                chartConfig={chartConfig}
+                accessor='billboards'
+                backgroundColor='transparent'
+              />
+            </Division>
+            <Division
+              marginTop={wp(15)}
+              width={wp(90)}
+              height={wp(50)}
+              backgroundColor='#ffffff'
+              borderRadius={wp(10)}>
+              <Division
+                width={wp(90)}>
+                <Division
+                  alignItems='center'
+                  flexDirection='row'
+                  justifyContent='space-between'
+                  paddingHorizontal={wp(10)}
+                  paddingVertical={wp(2)}>
+                  <Typography
+                    color='#FFC90A'
+                    fontSize={wp(6)}>
+                    1.
+                </Typography>
+                  <Division marginHorizontal={wp(3)} />
+                  <Division
+                    left={wp(35)}
+                    top={-wp(10)}
+                    position='absolute'
+                    height={wp(20)}
+                    width={wp(20)}
+                    borderRadius={wp(20 / 2)}>
+                    <Image
+                      source={{ uri: MonthlyMaintainerData[0].img }}
+                      style={{
+                        width: wp(20),
+                        height: wp(20),
+                        borderRadius: wp(20 / 2),
+                        borderWidth: 5,
+                        borderColor: '#FFC90A',
+                        flex: 1,
+                        resizeMode: 'cover'
+                      }} />
+                    <Crown height={wp(12)} width={wp(12)} style={{ position: 'absolute', top: -wp(6), marginHorizontal: wp(4) }} />
+                  </Division>
+                  <Division marginHorizontal={wp(3)} />
+                  <Typography
+                    color='#FFC90A'
+                    fontSize={wp(5)}>
+                    {'Score: ' + MonthlyMaintainerData[0].score}
+                  </Typography>
+                </Division>
+              </Division>
+              <Division
+                flex={1}
+                justifyContent='space-around'>
+                {
+                  MonthlyMaintainerData.slice(1, 4).map(item => {
+                    return (
+                      <Division
+                        marginHorizontal={wp(3)}
+                        flexDirection='row'
+                        justifyContent='space-around'
+                        alignItems='center'
+                        marginTop={wp(1)}>
+                        <Division
+                          alignItems='center'
+                          width={wp(18)}
+                          flexDirection='row'>
+                          <Typography
+                            color='#303E65'
+                            fontSize={wp(4)}
+                            fontWeight='semi-bold'>
+                            {MonthlyMaintainerData.indexOf(item) + 1 + '.'}
+                          </Typography>
+                          <Division
+                            marginLeft={wp(2)}
+                            height={wp(8)}
+                            width={wp(8)}
+                            borderRadius={wp(8 / 2)}>
+                            <Image
+                              source={{ uri: MonthlyMaintainerData[0].img }}
+                              style={{
+                                width: wp(8),
+                                height: wp(8),
+                                borderRadius: wp(8 / 2),
+                                borderWidth: 1,
+                                flex: 1,
+                                resizeMode: 'cover'
+                              }} />
+                          </Division>
+                        </Division>
+                        <Typography
+                          color='#000000'
+                          fontSize={wp(4)}
+                          fontWeight='semi-bold'
+                          width={wp(40)}>
+                          {item.name}
+                        </Typography>
+                        <Typography
+                          color='#000000'
+                          fontSize={wp(4)}
+                          fontWeight='semi-bold'
+                          width={wp(10)}>
+                          {item.score}
+                        </Typography>
+                      </Division>
+                    )
+                  })
+                }
+              </Division>
+            </Division>
+            <Division marginVertical={wp(13)} />
+          </ScrollView>
+        }
       </MenuProvider>
       <TabNavSupervisor />
     </>

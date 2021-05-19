@@ -22,8 +22,6 @@ export default () => {
       justifyContent='center'
       alignItems='center'
       backgroundColor='#1FB9FC'>
-
-
       <Division
         position='absolute'
         justifyContent='center'
@@ -106,24 +104,3 @@ export default () => {
     </Division>
   )
 }
-/*
-
-              <Division
-                height={wp(30)}
-                width={wp(30)}
-                opacity={1}>
-                <Image
-                  source={require('../assets/images/risk-management.png')}
-                  style={{
-                    width: wp(30),
-                    height: wp(30),
-                    borderTopLeftRadius: wp(4),
-                    borderBottomLeftRadius: wp(4),
-                    flex: 1,
-                    resizeMode: 'cover'
-                  }} />
-              </Division>
-            </Division>
-          </Division>
-        </Division>
-*/
