@@ -104,15 +104,7 @@ export default () => {
             </View>
           </Touchable>
         </Division>
-        <Typography
-          marginTop={wp(3)}
-          marginLeft={wp(5)}
-          fontSize={wp(5)}
-          fontWeight='semi-bold'
-          color='#303E65'>
-          Günün Bakımları
-        </Typography>
-        <TaskCard />
+
       </MenuProvider>
       { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <Division />}
     </>

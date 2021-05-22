@@ -61,6 +61,7 @@ export interface propsTasks {
   monthly?: string
   halfYearly?: string
   yearly?: string
+  firmName?: string
 }
 
 export const data: propsTasks[] = [

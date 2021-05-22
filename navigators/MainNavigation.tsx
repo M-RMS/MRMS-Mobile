@@ -11,6 +11,7 @@ import indexAdmin from '~/screens/Dashboards/Admin'
 import indexSupervisor from '~/screens/Dashboards/Supervisor'
 import pieceDetail from '~/screens/PieceDetail'
 import profile from '~/screens/Profile'
+import log from '~/screens/Log'
 import search from '~/screens/Search'
 import splash from '~/screens/Splash'
 
@@ -85,6 +86,7 @@ export default () => {
         <Stack.Screen name='profile' component={profile} />
         <Stack.Screen name='search' component={search} />
         <Stack.Screen name='splash' component={splash} />
+        <Stack.Screen name='log' component={log} />
 
       </Stack.Navigator>
     </NavigationContainer>

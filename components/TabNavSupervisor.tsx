@@ -23,10 +23,9 @@ export default () => {
         alignItems='center'
         justifyContent='space-evenly'>
         <Touchable
-          onPress={() => { navigate('search') }}>
+          onPress={() => { navigate('log') }}>
           <History />
         </Touchable>
-
         <Touchable
           onPress={() => { navigate('indexSupervisor') }}>
           <Home />
