@@ -3,7 +3,7 @@ import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
 import { wp } from '~/utils/responsive'
-import TaskCard from './DailyTasks'
+import LogCard from './LogTasks'
 import Home from '~/SVGComponents/Home'
 import { useNavigation } from '@react-navigation/native'
 import DotsVertical from '~/SVGComponents/DotsVertical'
@@ -22,7 +22,7 @@ import { MenuProvider } from 'react-native-popup-menu'
 export default () => {
   const { navigate } = useNavigation()
   const yetki = useSelector((state) => state.Role.str)
-  const [state, setState] = useState('uk')
+  const [loop, setLoop] = useState('yapılmış')
 
   return (
     <>
@@ -61,7 +61,7 @@ export default () => {
                 letterSpacing={0.33}
                 color='#ffffff'
               >
-                Hoşgeldiniz!
+                Bakım Geçmişi
             </Typography>
               <Typography
                 opacity={0.6}
@@ -104,8 +104,75 @@ export default () => {
             </View>
           </Touchable>
         </Division>
+        <Division
+          width={wp(100)}
+          height={wp(15)}
+          flexDirection='row'>
+          <Touchable
+            width={wp(100 / 3)}
+            height={wp(15)}
+            justifyContent='center'
+            onPress={() => {
+              setLoop('d')
+            }}>
+            <Typography
+              letterSpacing={0.2}
+              fontWeight={loop == 'd' ? 'boldest' : 'normal'}
+              color={loop == 'd' ? '#1FB9FC' : '#8F8F8F'}
+              textAlign='center'>
+              Başarılı
+            </Typography>
+          </Touchable>
+          <Division
+            borderColor='#A7A9B3'
+            borderLeftWidth={1}
+            marginVertical={wp(3)}
+          />
+          <Touchable
+            width={wp(100 / 3)}
+            height={wp(15)}
+            justifyContent='center'
+            onPress={() => {
+              setLoop('w')
+            }}>
+            <Typography
+              fontWeight={loop == 'w' ? 'boldest' : 'normal'}
+              color={loop == 'w' ? '#1FB9FC' : '#8F8F8F'}
+              letterSpacing={0.2}
+              textAlign='center'>
+              Yapılmamış
+            </Typography>
+          </Touchable>
+          <Division
+            borderColor='#A7A9B3'
+            borderLeftWidth={1}
+            marginVertical={wp(3)}
+          />
+          <Touchable
+            width={wp(100 / 3)}
+            height={wp(15)}
+            justifyContent='center'
+            onPress={() => {
+              setLoop('m')
+            }}>
+            <Typography
+              fontWeight={loop == 'm' ? 'boldest' : 'normal'}
+              color={loop == 'm' ? '#1FB9FC' : '#8F8F8F'}
+              letterSpacing={0.2}
+              textAlign='center'>
+              Arızalı
+            </Typography>
+          </Touchable>
+        </Division>
+        <Division
+          borderColor='#A7A9B3'
+          borderBottomWidth={1}
+          marginHorizontal={wp(5)}
+        />
+        <LogCard />
 
       </MenuProvider>
+
       { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <Division />}
     </>
   )

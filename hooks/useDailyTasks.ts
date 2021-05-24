@@ -62,6 +62,11 @@ export interface propsTasks {
   halfYearly?: string
   yearly?: string
   firmName?: string
+  userName?: string
+  userUrl?: string
+  faultDesc?: string
+  date?: string
+  fault?: boolean
 }
 
 export const data: propsTasks[] = [
@@ -79,6 +84,12 @@ export const data: propsTasks[] = [
     daily: 'Yağları Yenile',
     halfYearly: 'Demirleri cilala',
     riskDescription: 'Aşırı ısınmaya bağlı temasta ciltte kızarıklık',
+    userName: 'Ali Kuş',
+    userUrl: 'http://placeimg.com/500/500/people?19637',
+    date: '20 Mayıs Perşembe',
+    faultDesc: 'Yağ katmanları temizlenmediği için yağ yenilenemedi',
+    fault: true
+
   },
   {
     id: 2,
@@ -94,6 +105,11 @@ export const data: propsTasks[] = [
     monthly: 'Matkap ucunu törpüle',
     halfYearly: 'Bakırları cilala',
     riskDescription: 'El delinmesi',
+    userName: 'Ahmet Sezer',
+    userUrl: 'http://placeimg.com/500/500/people?19631',
+    date: '20 Mayıs Perşembe',
+    fault: false
+
   },
   {
     id: 3,
@@ -110,6 +126,7 @@ export const data: propsTasks[] = [
     monthly: 'Somunları sık',
     halfYearly: 'Silikonları Yenile',
     riskDescription: 'Aşırı ısınmaya bağlı temasta ciltte kızarıklık',
+    fault: false
   },
   {
     id: 4,
@@ -125,6 +142,7 @@ export const data: propsTasks[] = [
     halfYearly: 'Parçayı Değiştir',
     yearly: 'Gövdeyi değiştir',
     riskDescription: 'Uzuv kopması',
+    fault: false
   },
   {
     id: 5,
@@ -140,6 +158,7 @@ export const data: propsTasks[] = [
     daily: 'Cilala',
     halfYearly: 'Demirleri cilala',
     riskDescription: 'Deri yapışması',
+    fault: false
   },
   {
     id: 6,
@@ -157,6 +176,7 @@ export const data: propsTasks[] = [
     halfYearly: 'Demirleri cilala',
     yearly: 'Gövdeyi değiştir',
     riskDescription: 'Göz sulanması',
+    fault: false
   },
   {
     id: 7,
@@ -174,6 +194,7 @@ export const data: propsTasks[] = [
     halfYearly: 'Demirleri cilala',
     yearly: 'Gövdeyi değiştir',
     riskDescription: 'Kulak çınlaması',
+    fault: false
   },
 ]
 export default useDailyTasks
