@@ -77,7 +77,7 @@ export const data: propsTasks[] = [
     pieceImageUrl: 'http://placeimg.com/500/500/nature?19630',
     type: Type.Daily,
     maintenance: 'Yağları yenile',
-    isDone: false,
+    isDone: true,
     riskLevel: 2,
     machineName: 'Lamel Makinesi',
     machineGroup: 'Sarım Grubu',
@@ -86,7 +86,7 @@ export const data: propsTasks[] = [
     riskDescription: 'Aşırı ısınmaya bağlı temasta ciltte kızarıklık',
     userName: 'Ali Kuş',
     userUrl: 'http://placeimg.com/500/500/people?19637',
-    date: '20 Mayıs Perşembe',
+    date: '20 Mayıs',
     faultDesc: 'Yağ katmanları temizlenmediği için yağ yenilenemedi',
     fault: true
 
@@ -107,7 +107,7 @@ export const data: propsTasks[] = [
     riskDescription: 'El delinmesi',
     userName: 'Ahmet Sezer',
     userUrl: 'http://placeimg.com/500/500/people?19631',
-    date: '20 Mayıs Perşembe',
+    date: '21 Mayıs',
     fault: false
 
   },
@@ -158,13 +158,16 @@ export const data: propsTasks[] = [
     daily: 'Cilala',
     halfYearly: 'Demirleri cilala',
     riskDescription: 'Deri yapışması',
-    fault: false
+    fault: false,
+    userName: 'Mehmet Bahçivan',
+    userUrl: 'http://placeimg.com/500/500/people?19627',
+    date: '22 Mayıs',
   },
   {
     id: 6,
     pieceId: 26,
     pieceName: 'Kağıt Tekeri',
-    pieceImageUrl: 'http://placeimg.com/500/500/nature?19635',
+    pieceImageUrl: 'http://placeimg.com/500/500/nature?19655',
     type: Type.Daily,
     maintenance: 'Hamuru Değiştir',
     isDone: false,
@@ -194,7 +197,10 @@ export const data: propsTasks[] = [
     halfYearly: 'Demirleri cilala',
     yearly: 'Gövdeyi değiştir',
     riskDescription: 'Kulak çınlaması',
-    fault: false
+    fault: false,
+    userName: 'Sinem Kolon',
+    userUrl: 'http://placeimg.com/500/500/people?19697',
+    date: '29 Mayıs',
   },
 ]
 export default useDailyTasks

@@ -222,18 +222,39 @@ export default ({ item }: DailyTasksProps) => {
                   resizeMode: 'cover'
                 }} />
             </Division>
-            <Typography>
-              {item.userName}
-            </Typography>
-            <Typography>
-              {item.date}
-            </Typography>
+            <Division
+              flex={1}
+              paddingLeft={wp(3)}
+              paddingRight={wp(15)}
+              flexDirection='row'
+              alignItems='center'
+              justifyContent='space-between'>
+              <Typography
+                numberOfLines={1}
+                fontSize={wp(4)}
+                color='#303E65'>
+                {item.userName}
+              </Typography>
+              <Typography>
+                {item.date}
+              </Typography>
+            </Division>
           </>
-          : <Typography>
-            Bakım yapılmamıştır</Typography>}
+
+          : <Division
+            flex={1}
+            justifyContent='center'
+            alignItems='center'>
+            <Typography
+              numberOfLines={1}
+              fontSize={wp(4)}
+              color='#ED1766'>
+              Bakım yapılmamıştır</Typography>
+          </Division>
+        }
         <Touchable
           position='absolute'
-          right={0}
+          right={wp(5)}
           onPress={() => {
             setArrowState(!arrowState)
           }}>

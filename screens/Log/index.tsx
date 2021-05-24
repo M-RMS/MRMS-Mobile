@@ -3,7 +3,9 @@ import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
 import { wp } from '~/utils/responsive'
-import LogCard from './LogTasks'
+import DoneLog from './DoneLog'
+import FaultLog from './FaultLog'
+import NotDoneLog from './NotDoneLog'
 import Home from '~/SVGComponents/Home'
 import { useNavigation } from '@react-navigation/native'
 import DotsVertical from '~/SVGComponents/DotsVertical'
@@ -22,7 +24,7 @@ import { MenuProvider } from 'react-native-popup-menu'
 export default () => {
   const { navigate } = useNavigation()
   const yetki = useSelector((state) => state.Role.str)
-  const [loop, setLoop] = useState('yapılmış')
+  const [loop, setLoop] = useState('done')
 
   return (
     <>
@@ -113,12 +115,12 @@ export default () => {
             height={wp(15)}
             justifyContent='center'
             onPress={() => {
-              setLoop('d')
+              setLoop('done')
             }}>
             <Typography
               letterSpacing={0.2}
-              fontWeight={loop == 'd' ? 'boldest' : 'normal'}
-              color={loop == 'd' ? '#1FB9FC' : '#8F8F8F'}
+              fontWeight={loop == 'done' ? 'boldest' : 'normal'}
+              color={loop == 'done' ? '#1FB9FC' : '#8F8F8F'}
               textAlign='center'>
               Başarılı
             </Typography>
@@ -133,11 +135,11 @@ export default () => {
             height={wp(15)}
             justifyContent='center'
             onPress={() => {
-              setLoop('w')
+              setLoop('notDone')
             }}>
             <Typography
-              fontWeight={loop == 'w' ? 'boldest' : 'normal'}
-              color={loop == 'w' ? '#1FB9FC' : '#8F8F8F'}
+              fontWeight={loop == 'notDone' ? 'boldest' : 'normal'}
+              color={loop == 'notDone' ? '#1FB9FC' : '#8F8F8F'}
               letterSpacing={0.2}
               textAlign='center'>
               Yapılmamış
@@ -153,11 +155,11 @@ export default () => {
             height={wp(15)}
             justifyContent='center'
             onPress={() => {
-              setLoop('m')
+              setLoop('fault')
             }}>
             <Typography
-              fontWeight={loop == 'm' ? 'boldest' : 'normal'}
-              color={loop == 'm' ? '#1FB9FC' : '#8F8F8F'}
+              fontWeight={loop == 'fault' ? 'boldest' : 'normal'}
+              color={loop == 'fault' ? '#1FB9FC' : '#8F8F8F'}
               letterSpacing={0.2}
               textAlign='center'>
               Arızalı
@@ -169,7 +171,10 @@ export default () => {
           borderBottomWidth={1}
           marginHorizontal={wp(5)}
         />
-        <LogCard />
+        {loop == 'fault' ? <FaultLog />
+          : loop == 'done' ? <DoneLog />
+            :
+            <NotDoneLog />}
 
       </MenuProvider>
 

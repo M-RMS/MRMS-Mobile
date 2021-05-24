@@ -231,7 +231,10 @@ export default () => {
               backgroundColor='#ED1766'
               borderRadius={wp(8)}
               justifyContent='center'
-              alignItems='center'>
+              alignItems='center'
+              onPress={() => {
+                navigate('log')
+              }}>
               <Typography
                 fontSize={wp(5)}
                 fontWeight='bold'
