@@ -14,6 +14,7 @@ import { View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import TabNavSupervisor from '~/components/TabNavSupervisor'
 import TabNavMaintainer from '~/components/TabNavMaintainer'
+import TabNavAdmin from '~/components/TabNavAdmin'
 import {
   Menu,
   MenuOptions,
@@ -24,7 +25,7 @@ import { MenuProvider } from 'react-native-popup-menu'
 export default () => {
   const { navigate } = useNavigation()
   const yetki = useSelector((state) => state.Role.str)
-  const [loop, setLoop] = useState('done')
+  const [loop, setLoop] = useState('fault')
 
   return (
     <>
@@ -115,6 +116,26 @@ export default () => {
             height={wp(15)}
             justifyContent='center'
             onPress={() => {
+              setLoop('fault')
+            }}>
+            <Typography
+              fontWeight={loop == 'fault' ? 'boldest' : 'normal'}
+              color={loop == 'fault' ? '#1FB9FC' : '#8F8F8F'}
+              letterSpacing={0.2}
+              textAlign='center'>
+              Arızalı
+            </Typography>
+          </Touchable>
+          <Division
+            borderColor='#A7A9B3'
+            borderLeftWidth={1}
+            marginVertical={wp(3)}
+          />
+          <Touchable
+            width={wp(100 / 3)}
+            height={wp(15)}
+            justifyContent='center'
+            onPress={() => {
               setLoop('done')
             }}>
             <Typography
@@ -145,26 +166,7 @@ export default () => {
               Yapılmamış
             </Typography>
           </Touchable>
-          <Division
-            borderColor='#A7A9B3'
-            borderLeftWidth={1}
-            marginVertical={wp(3)}
-          />
-          <Touchable
-            width={wp(100 / 3)}
-            height={wp(15)}
-            justifyContent='center'
-            onPress={() => {
-              setLoop('fault')
-            }}>
-            <Typography
-              fontWeight={loop == 'fault' ? 'boldest' : 'normal'}
-              color={loop == 'fault' ? '#1FB9FC' : '#8F8F8F'}
-              letterSpacing={0.2}
-              textAlign='center'>
-              Arızalı
-            </Typography>
-          </Touchable>
+
         </Division>
         <Division
           borderColor='#A7A9B3'
@@ -178,7 +180,7 @@ export default () => {
 
       </MenuProvider>
 
-      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <Division />}
+      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <TabNavAdmin />}
     </>
   )
 }

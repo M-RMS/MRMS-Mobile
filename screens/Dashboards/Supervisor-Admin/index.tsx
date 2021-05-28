@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
@@ -8,6 +8,9 @@ import DotsVertical from '~/SVGComponents/DotsVertical'
 import RiskManagement from '~/SVGComponents/RiskManagement'
 import { View } from 'react-native'
 import TabNavSupervisor from '~/components/TabNavSupervisor'
+import TabNavMaintainer from '~/components/TabNavMaintainer'
+import { useDispatch, useSelector } from 'react-redux'
+import TabNavAdmin from '~/components/TabNavAdmin'
 import { useNavigation } from '@react-navigation/native'
 import { Modal, RefreshControl } from 'react-native'
 import Image from '~/components/Image'
@@ -23,6 +26,10 @@ import { MenuProvider } from 'react-native-popup-menu'
 import { PieChart } from 'react-native-chart-kit'
 import { Item } from 'react-native-paper/lib/typescript/components/List/List'
 export default () => {
+  const yetki = useSelector((state) => state.Role.str)
+  useEffect(() => {
+    console.warn(yetki)
+  }, [])
   const { navigate } = useNavigation()
   const [loop, setLoop] = useState('d')
   const dataDaily = [
@@ -702,7 +709,7 @@ export default () => {
             </ScrollView>
         }
       </MenuProvider>
-      <TabNavSupervisor />
+      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <TabNavAdmin />}
     </>
   )
 }

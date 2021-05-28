@@ -128,7 +128,7 @@ export default () => {
             backgroundColor='#000000'
             onPress={() => {
               dispatch(roleAction('Admin'))
-              navigate('indexAdmin')
+              navigate('indexSupervisor')
             }}>
             <Typography
               fontSize={wp(7)}

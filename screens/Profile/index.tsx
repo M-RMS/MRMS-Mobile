@@ -12,6 +12,7 @@ import Image from '~/components/Image'
 import { KeyboardAvoidingView, TextInput } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import TabNavSupervisor from '~/components/TabNavSupervisor'
+import TabNavAdmin from '~/components/TabNavAdmin'
 //import { TextInput } from 'react-native-paper'
 import {
   Menu,
@@ -227,7 +228,7 @@ export default () => {
           </KeyboardAvoidingView>
         </Division>
       </MenuProvider>
-      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <Division />}
+      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <TabNavAdmin />}
     </>
   )
 }

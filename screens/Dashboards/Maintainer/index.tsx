@@ -12,6 +12,7 @@ import { View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import TabNavSupervisor from '~/components/TabNavSupervisor'
 import TabNavMaintainer from '~/components/TabNavMaintainer'
+import TabNavAdmin from '~/components/TabNavAdmin'
 import {
   Menu,
   MenuOptions,
@@ -114,7 +115,7 @@ export default () => {
         </Typography>
         <TaskCard />
       </MenuProvider>
-      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <Division />}
+      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <TabNavAdmin />}
     </>
   )
 }
