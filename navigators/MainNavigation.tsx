@@ -7,7 +7,6 @@ import useNavigationState from '~/hooks/useNavigationState'
 
 import Login from '~/screens/Login'
 import indexMaintainer from '~/screens/Dashboards/Maintainer'
-import indexAdmin from '~/screens/Dashboards/Admin'
 import indexSupervisor from '~/screens/Dashboards/Supervisor-Admin'
 import pieceDetail from '~/screens/PieceDetail'
 import profile from '~/screens/Profile'
@@ -19,13 +18,14 @@ import splash from '~/screens/Splash'
 export { StackScreenProps } from '@react-navigation/stack'
 
 export type RootStackParamList = {
-  //Main: undefined
-  //TasarimEkrani:undefined
-  MainA: undefined
-  MainF: undefined
-  DetailsF: undefined
-  Reporting: undefined
-  OnBoarding: undefined
+  Login: undefined
+  indexSupervisor: undefined
+  indexMaintainer: undefined
+  pieceDetail: undefined
+  profile: undefined
+  splash: undefined
+  search: undefined
+  log: undefined
 }
 
 export interface ModalProps {
@@ -77,17 +77,14 @@ export default () => {
           headerShown: false,
         }}
       >
-
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='indexMaintainer' component={indexMaintainer} />
         <Stack.Screen name='indexSupervisor' component={indexSupervisor} />
-        <Stack.Screen name='indexAdmin' component={indexAdmin} />
         <Stack.Screen name='pieceDetail' component={pieceDetail} />
         <Stack.Screen name='profile' component={profile} />
         <Stack.Screen name='search' component={search} />
         <Stack.Screen name='splash' component={splash} />
         <Stack.Screen name='log' component={log} />
-
       </Stack.Navigator>
     </NavigationContainer>
   )
