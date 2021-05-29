@@ -41,7 +41,7 @@ export default () => {
           <Profile />
         </Touchable>
         <Touchable
-          onPress={() => { navigate('profile') }}>
+          onPress={() => { navigate('UserManagement') }}>
           <UserManagement />
         </Touchable>
       </Division>

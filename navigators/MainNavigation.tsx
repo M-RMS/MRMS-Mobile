@@ -11,6 +11,7 @@ import indexSupervisor from '~/screens/Dashboards/Supervisor-Admin'
 import pieceDetail from '~/screens/PieceDetail'
 import profile from '~/screens/Profile'
 import log from '~/screens/Log'
+import UserManagement from '~/screens/UserManagement'
 import search from '~/screens/Search'
 import splash from '~/screens/Splash'
 
@@ -26,6 +27,7 @@ export type RootStackParamList = {
   splash: undefined
   search: undefined
   log: undefined
+  UserManagement: undefined
 }
 
 export interface ModalProps {
@@ -85,6 +87,7 @@ export default () => {
         <Stack.Screen name='search' component={search} />
         <Stack.Screen name='splash' component={splash} />
         <Stack.Screen name='log' component={log} />
+        <Stack.Screen name='UserManagement' component={UserManagement} />
       </Stack.Navigator>
     </NavigationContainer>
   )
