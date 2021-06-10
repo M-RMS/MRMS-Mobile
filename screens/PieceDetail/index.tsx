@@ -10,6 +10,7 @@ import ArrowDown from '~/SVGComponents/ArrowDown'
 import UpArrow from '~/SVGComponents/UpArrow'
 import BackArrow from '~/SVGComponents/BackArrow'
 import { ScrollView } from 'react-native-gesture-handler'
+import axios from 'axios'
 
 export interface propsTasks {
   id: number
@@ -44,9 +45,31 @@ export default () => {
   const route = useRoute()
 
   const [state, setState] = useState(1)
+  const [data, setData] = useState('s')
+  const [ready, setReady] = useState(false)
 
   let itemData: propsTasks = route.params
 
+  useEffect(() => {
+    try {
+      axios
+        .request({
+          method: 'get',
+          url: 'http://192.168.1.33:45455/get-pieces-and-maintenances',
+
+        })
+        .then((response) => {
+
+          setData(response.data)
+          setData(data[itemData.mID - 1])
+          setReady(true)
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }, [])
+  console.log('******************')
+  console.log(data)
   return (
 
     <>

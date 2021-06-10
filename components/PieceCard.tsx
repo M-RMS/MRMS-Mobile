@@ -109,7 +109,7 @@ export default ({ item }: PieceProps) => {
         height={wp(30)}
         width={wp(30)}>
         <Image
-          source={{ uri: item.pieceImageUrl }}
+          source={{ uri: 'http://placeimg.com/500/500/people?19637' }}
           style={{
             width: wp(30),
             height: wp(30),
@@ -126,38 +126,38 @@ export default ({ item }: PieceProps) => {
         <Division>
           <Typography
             fontSize={wp(4.2)}
-            color='#303E65'
+            color='#1F263E'
             numberOfLines={1}>
             {item.pieceName}
           </Typography>
           <Typography
-            fontSize={wp(3.3)}
+            fontSize={wp(2.7)}
             numberOfLines={1}>
-            {item.machineName + ' / ' + item.machineGroup}
+            {item.machinez.MachineName + ' / ' + item.groupz.GroupName}
           </Typography>
         </Division>
         <Division
           flexDirection='row'
           justifyContent='space-evenly'>
-          <Daily width={wp(5)} height={wp(5)} fill={item?.daily ? 'green' : 'red'} />
-          <Weekly width={wp(5)} height={wp(5)} fill={item?.weekly ? 'green' : 'red'} />
-          <Monthly width={wp(5)} height={wp(5)} fill={item?.monthly ? 'green' : 'red'} />
-          <SixMonthly width={wp(5)} height={wp(5)} fill={item?.halfYearly ? 'green' : 'red'} />
-          <Yearly width={wp(5)} height={wp(5)} fill={item?.yearly ? 'green' : 'red'} />
+          <Daily width={wp(5)} height={wp(5)} fill={item?.maintenanceType[0]?.typeName == 'daily' ? 'green' : '#ACACAC'} />
+          <Weekly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[1]?.typeName == 'weekly' ? 'green' : '#ACACAC'} />
+          <Monthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[2]?.typeName == 'monthly' ? 'green' : '#ACACAC'} />
+          <SixMonthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[3]?.typeName == 'yearly' ? 'green' : '#ACACAC'} />
+          <Yearly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[4]?.typeName == 'yearly' ? 'green' : '#ACACAC'} />
         </Division>
         <Division
           alignItems='flex-end'>
           <Typography
             fontSize={wp(3.5)}
-            color='#303E65'
+            color='#1F263E'
             numberOfLines={1}>
             Risk Derecesi: <Typography
               fontSize={wp(3.5)}
-              color={item.riskLevel == 5 ? '#ED1766'
-                : item.riskLevel == 4 ? '#ED7823'
-                  : item.riskLevel == 3 ? '#FFC90A'
-                    : item.riskLevel == 2 ? '#78BB43'
-                      : '#1F9ED9'}>{item.riskLevel}</Typography>
+              color={item.pieceRiskLevel == 5 ? '#ED1766'
+                : item.pieceRiskLevel == 4 ? '#ED7823'
+                  : item.pieceRiskLevel == 3 ? '#FFC90A'
+                    : item.pieceRiskLevel == 2 ? '#78BB43'
+                      : '#1F9ED9'}>{item.pieceRiskLevel}</Typography>
           </Typography>
         </Division>
       </Division>

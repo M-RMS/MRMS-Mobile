@@ -22,6 +22,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
 import AsyncStorage from '@react-native-community/async-storage'
+import RandomReducer from '~/redux/reducers/RandomReducer'
 
 
 if (Platform.OS === 'android') {
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
 
 
   Role: RoleReducer,
+  Random: RandomReducer
 
 
 

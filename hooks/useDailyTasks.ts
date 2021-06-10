@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 export type TasksRequestObject = {
   data: propsTasks[]
@@ -8,6 +10,9 @@ export type TasksRequestObject = {
 }
 
 const useDailyTasks = (skeletonCount?: number | undefined) => {
+
+  const rnd = useSelector((state) => state.Random.num)
+  const [holder, setHolder] = useState(-1)
   const initialValues: TasksRequestObject = {
     data: skeletonCount ? Array(skeletonCount).fill(0) : [],
     fetched: false,
@@ -20,54 +25,59 @@ const useDailyTasks = (skeletonCount?: number | undefined) => {
   )
 
   useEffect(() => {
-    const time = setTimeout(() => {
+    holder !== rnd ?
       setRequest({
-        data,
-        fetched: true,
-        fetching: false,
+        data: skeletonCount ? Array(skeletonCount).fill(0) : [],
+        fetched: false,
+        fetching: true,
         error: false,
       })
-    }, 2222)
+      : ''
+    try {
+      axios
+        .request({
+          method: 'get',
+          url: 'http://192.168.1.33:45455/get-all-maintenances2',
 
-    return () => clearTimeout(time)
-  }, [])
+        })
+        .then((response) => {
+          setHolder(rnd)
+          setRequest({
+            data: response.data,
+            fetched: true,
+            fetching: false,
+            error: false,
+          })
+
+
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }, [rnd])
 
   return request
 }
 
-enum Type {
-  Daily = 'Günlük Bakım',
-  Weekly = 'Haftalık Bakım',
-  Monthly = 'Aylık Bakım',
-  HalfYearly = '6 Aylık Bakım',
-  Yearly = 'Yıllık Bakım'
-}
-
 
 export interface propsTasks {
-  id: number
-  pieceId: number
-  pieceName: String
-  pieceImageUrl: string
-  type: Type
-  maintenance: String
-  isDone: boolean
-  riskLevel: number
-  machineName?: string
-  machineGroup?: string
-  riskDescription?: string
-  daily?: string
-  weekly?: string
-  monthly?: string
-  halfYearly?: string
-  yearly?: string
-  firmName?: string
-  userName?: string
-  userUrl?: string
-  faultDesc?: string
-  date?: string
-  fault?: boolean
+  mID: number;
+  machineName: string;
+  groupName: string;
+  pieceID: number;
+  pieceName: string;
+  pieceImageURL: string;
+  pieceRisk: string;
+  pieceRiskDegree: number;
+  mtypes: string;
+  mdefination: string;
+  userName: string;
+  moccurederror: string;
+  mstype: string;
 }
+
+
+/*
 
 export const data: propsTasks[] = [
   {
@@ -202,5 +212,5 @@ export const data: propsTasks[] = [
     userUrl: 'http://placeimg.com/500/500/people?19697',
     date: '29 Mayıs',
   },
-]
+]*/
 export default useDailyTasks

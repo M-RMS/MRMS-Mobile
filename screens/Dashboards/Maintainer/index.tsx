@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
@@ -20,10 +20,29 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu'
 import { MenuProvider } from 'react-native-popup-menu'
+
+import RandomNumberAction from '~/redux/actions/RandomNumberAction'
+
+import axios from 'axios'
 export default () => {
+
+
+  const [refreshing, setRefreshing] = useState(false)
+
+  const wait = (timeout: number) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout)
+    })
+  }
+  const dispatch = useDispatch()
+  const onRefresh = React.useCallback(() => {
+    dispatch(RandomNumberAction(Math.random()))
+    setRefreshing(true)
+
+    wait(2000).then(() => setRefreshing(false))
+  }, [])
   const { navigate } = useNavigation()
   const yetki = useSelector((state) => state.Role.str)
-  const [state, setState] = useState('uk')
 
   return (
     <>

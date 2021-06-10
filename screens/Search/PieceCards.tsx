@@ -7,8 +7,11 @@ import { FlatList, RefreshControl } from 'react-native'
 import { wp } from '~/utils/responsive'
 import usePieces from '~/hooks/usePieces'
 import Division from '~/components/Division'
+import { useDispatch } from 'react-redux'
+import RandomNumberAction from '~/redux/actions/RandomNumberAction'
 
 export default () => {
+  const dispatch = useDispatch()
   const { data } = usePieces(5)
   const [refreshing, setRefreshing] = useState(false)
   const wait = (timeout: number) => {
@@ -17,9 +20,12 @@ export default () => {
     })
   }
   const onRefresh = React.useCallback(() => {
+    dispatch(RandomNumberAction(Math.random()))
     setRefreshing(true)
-    wait(5000).then(() => setRefreshing(false))
+
+    wait(1500).then(() => setRefreshing(false))
   }, [])
+
 
   return (
     <Section>
@@ -27,10 +33,11 @@ export default () => {
         style={{ paddingHorizontal: wp(5) }}
         refreshControl={<RefreshControl
           colors={['#303E65']}
-          refreshing={refreshing} />
+          refreshing={refreshing}
+          onRefresh={onRefresh} />
         }
         showsVerticalScrollIndicator={false}
-        keyExtractor={data.id}
+        keyExtractor={data.pieceID}
         data={data}
         renderItem={({ item }) => {
           return (

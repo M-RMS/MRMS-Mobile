@@ -76,10 +76,10 @@ export default ({ item }: DailyTasksProps) => {
   const [arrowState, setArrowState] = useState(false)
   return (
     <Division
-      borderColor={item.riskLevel == 5 ? '#ED1766'
-        : item.riskLevel == 4 ? '#ED7823'
-          : item.riskLevel == 3 ? '#FFC90A'
-            : item.riskLevel == 2 ? '#78BB43'
+      borderColor={item.pieceRiskDegree == 5 ? '#ED1766'
+        : item.pieceRiskDegree == 4 ? '#ED7823'
+          : item.pieceRiskDegree == 3 ? '#FFC90A'
+            : item.pieceRiskDegree == 2 ? '#78BB43'
               : '#1F9ED9'}
       marginVertical={wp(1.5)}
       marginHorizontal={wp(5)}
@@ -100,7 +100,7 @@ export default ({ item }: DailyTasksProps) => {
           width={wp(10)}
           borderRadius={wp(5)}>
           <Image
-            source={{ uri: item.pieceImageUrl }}
+            source={{ uri: 'http://placeimg.com/500/500/nature?19630' }}
             style={{
               width: wp(10),
               height: wp(10),
@@ -130,7 +130,7 @@ export default ({ item }: DailyTasksProps) => {
             color='#303E65'>
             Bakım:
             <Typography>
-              {' ' + item.maintenance}
+              {' ' + item.mdefination}
             </Typography>
           </Typography>
           {!arrowState ? <Division /> : <Typography
@@ -139,14 +139,14 @@ export default ({ item }: DailyTasksProps) => {
             color='#303E65'>
             Bakım Döngüsü
             <Typography>
-              {' ' + item.type}
+              {' ' + item.mtypes}
             </Typography>
           </Typography>}
         </Division>
-        <Division borderLeftWidth={1} marginRight={wp(2)} opacity={0.5} height={arrowState ? wp(42) : wp(19)} borderColor={item.riskLevel == 5 ? '#ED1766'
-          : item.riskLevel == 4 ? '#ED7823'
-            : item.riskLevel == 3 ? '#FFC90A'
-              : item.riskLevel == 2 ? '#78BB43'
+        <Division borderLeftWidth={1} marginRight={wp(2)} opacity={0.5} height={arrowState ? wp(42) : wp(19)} borderColor={item.pieceRiskDegree == 5 ? '#ED1766'
+          : item.pieceRiskDegree == 4 ? '#ED7823'
+            : item.pieceRiskDegree == 3 ? '#FFC90A'
+              : item.pieceRiskDegree == 2 ? '#78BB43'
                 : '#1F9ED9'} />
         <Division>
           <Typography
@@ -156,14 +156,14 @@ export default ({ item }: DailyTasksProps) => {
             Risk Derecesi
           </Typography>
           <Typography
-            color={item.riskLevel == 5 ? '#ED1766'
-              : item.riskLevel == 4 ? '#ED7823'
-                : item.riskLevel == 3 ? '#FFC90A'
-                  : item.riskLevel == 2 ? '#78BB43'
+            color={item.pieceRiskDegree == 5 ? '#ED1766'
+              : item.pieceRiskDegree == 4 ? '#ED7823'
+                : item.pieceRiskDegree == 3 ? '#FFC90A'
+                  : item.pieceRiskDegree == 2 ? '#78BB43'
                     : '#1F9ED9'}
             textAlign='center'
             fontSize={wp(8)}>
-            {item.riskLevel}
+            {item.pieceRiskDegree}
           </Typography>
           {arrowState ?
             <Touchable
@@ -171,21 +171,22 @@ export default ({ item }: DailyTasksProps) => {
               justifyContent='center'
               alignItems='center'
               onPress={() => {
+
                 navigate('pieceDetail', item)
               }}>
-              <Detail fill={item.riskLevel == 5 ? '#ED1766'
-                : item.riskLevel == 4 ? '#ED7823'
-                  : item.riskLevel == 3 ? '#FFC90A'
-                    : item.riskLevel == 2 ? '#78BB43'
+              <Detail fill={item.pieceRiskDegree == 5 ? '#ED1766'
+                : item.pieceRiskDegree == 4 ? '#ED7823'
+                  : item.pieceRiskDegree == 3 ? '#FFC90A'
+                    : item.pieceRiskDegree == 2 ? '#78BB43'
                       : '#1F9ED9'} />
             </Touchable>
             : <Division />}
         </Division>
       </Division>
-      <Division borderTopWidth={1} opacity={0.5} marginHorizontal={wp(2)} borderColor={item.riskLevel == 5 ? '#ED1766'
-        : item.riskLevel == 4 ? '#ED7823'
-          : item.riskLevel == 3 ? '#FFC90A'
-            : item.riskLevel == 2 ? '#78BB43'
+      <Division borderTopWidth={1} opacity={0.5} marginHorizontal={wp(2)} borderColor={item.pieceRiskDegree == 5 ? '#ED1766'
+        : item.pieceRiskDegree == 4 ? '#ED7823'
+          : item.pieceRiskDegree == 3 ? '#FFC90A'
+            : item.pieceRiskDegree == 2 ? '#78BB43'
               : '#1F9ED9'} marginTop={arrowState ? wp(0) : wp(0)} />
       <Division
         alignItems='center'
@@ -194,10 +195,10 @@ export default ({ item }: DailyTasksProps) => {
         flexDirection='row'
         marginHorizontal={wp(5)}>
         <Touchable
-          borderColor={item.riskLevel == 5 ? '#ED1766'
-            : item.riskLevel == 4 ? '#ED7823'
-              : item.riskLevel == 3 ? '#FFC90A'
-                : item.riskLevel == 2 ? '#78BB43'
+          borderColor={item.pieceRiskDegree == 5 ? '#ED1766'
+            : item.pieceRiskDegree == 4 ? '#ED7823'
+              : item.pieceRiskDegree == 3 ? '#FFC90A'
+                : item.pieceRiskDegree == 2 ? '#78BB43'
                   : '#1F9ED9'}
           borderWidth={1}
           width={wp(25)}
@@ -206,10 +207,10 @@ export default ({ item }: DailyTasksProps) => {
           justifyContent='center'
           alignItems='center'>
           <Typography
-            color={item.riskLevel == 5 ? '#ED1766'
-              : item.riskLevel == 4 ? '#ED7823'
-                : item.riskLevel == 3 ? '#FFC90A'
-                  : item.riskLevel == 2 ? '#78BB43'
+            color={item.pieceRiskDegree == 5 ? '#ED1766'
+              : item.pieceRiskDegree == 4 ? '#ED7823'
+                : item.pieceRiskDegree == 3 ? '#FFC90A'
+                  : item.pieceRiskDegree == 2 ? '#78BB43'
                     : '#1F9ED9'}
             textAlign='center'
             fontSize={wp(3.5)}>
