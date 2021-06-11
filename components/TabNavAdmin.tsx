@@ -25,7 +25,7 @@ export default () => {
         alignItems='center'
         justifyContent='space-evenly'>
         <Touchable
-          onPress={() => { navigate('log') }}>
+          onPress={() => { navigate('machines') }}>
           <Machine />
         </Touchable>
         <Touchable

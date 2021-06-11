@@ -1,55 +1,64 @@
 import { useEffect, useState } from 'react'
-
+import axios from 'axios'
+import { useSelector } from 'react-redux'
 export type UserMRequestObject = {
   data: propsUserM[]
   fetched?: boolean
   fetching?: boolean
   error?: boolean
 }
-
 const useUserM = (skeletonCount?: number | undefined) => {
+  const rnd = useSelector((state) => state.Random.num)
+  const [holder, setHolder] = useState(-1)
   const initialValues: UserMRequestObject = {
     data: skeletonCount ? Array(skeletonCount).fill(0) : [],
     fetched: false,
     fetching: true,
     error: false,
   }
-
   const [request, setRequest] = useState<UserMRequestObject>(
     initialValues
   )
-
   useEffect(() => {
-    const time = setTimeout(() => {
+    holder !== rnd ?
       setRequest({
-        data,
-        fetched: true,
-        fetching: false,
+        data: skeletonCount ? Array(skeletonCount).fill(0) : [],
+        fetched: false,
+        fetching: true,
         error: false,
       })
-    }, 2222)
-
-    return () => clearTimeout(time)
-  }, [])
-
+      : ''
+    try {
+      axios
+        .request({
+          method: 'get',
+          url: 'http://192.168.1.33:45455/api/users',
+        })
+        .then((response) => {
+          setHolder(rnd)
+          setRequest({
+            data: response.data,
+            fetched: true,
+            fetching: false,
+            error: false,
+          })
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }, [rnd])
   return request
 }
-
-enum roles {
-  Admin = 'Yönetici',
-  Supervisor = 'Gözlemci',
-  Maintainer = 'Bakımcı'
-}
-
 export interface propsUserM {
-  id: number
-  name: string
-  email: string
-  mobileNumber: string
-  imgUrl?: string
-  role: roles
+  userID: number;
+  userName: string;
+  userDefine: string;
+  userMail: string;
+  userMobile: string;
+  userPassword: string;
+  userImageURL: string;
 }
-
+/*
 export const data: propsUserM[] = [
   {
     id: 1,
@@ -75,5 +84,5 @@ export const data: propsUserM[] = [
     role: roles.Maintainer,
     imgUrl: 'http://placeimg.com/500/500/people?19111'
   },
-]
+]*/
 export default useUserM

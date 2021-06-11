@@ -4,12 +4,11 @@ import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
 import { hp, wp } from '~/utils/responsive'
 import UserCards from './UserCards'
-import Home from '~/SVGComponents/Home'
 import { useNavigation } from '@react-navigation/native'
 import DotsVertical from '~/SVGComponents/DotsVertical'
 import RiskManagement from '~/SVGComponents/RiskManagement'
-import { View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { View, Modal } from 'react-native'
+import { useSelector } from 'react-redux'
 import TabNavSupervisor from '~/components/TabNavSupervisor'
 import TabNavMaintainer from '~/components/TabNavMaintainer'
 import TabNavAdmin from '~/components/TabNavAdmin'
@@ -24,7 +23,6 @@ import AddUser from '~/SVGComponents/AddUser'
 export default () => {
   const { navigate } = useNavigation()
   const yetki = useSelector((state) => state.Role.str)
-  const [loop, setLoop] = useState('fault')
 
   return (
     <>
@@ -125,6 +123,8 @@ export default () => {
         <AddUser width={wp(8)} height={wp(8)} fill={'#ffffff'} />
       </Touchable>
       { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <TabNavAdmin />}
+
+
     </>
   )
 }

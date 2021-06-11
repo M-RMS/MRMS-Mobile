@@ -14,6 +14,7 @@ import log from '~/screens/Log'
 import UserManagement from '~/screens/UserManagement'
 import search from '~/screens/Search'
 import splash from '~/screens/Splash'
+import machines from '~/screens/Machines'
 
 
 export { StackScreenProps } from '@react-navigation/stack'
@@ -28,6 +29,7 @@ export type RootStackParamList = {
   search: undefined
   log: undefined
   UserManagement: undefined
+  machines: undefined
 }
 
 export interface ModalProps {
@@ -88,6 +90,7 @@ export default () => {
         <Stack.Screen name='splash' component={splash} />
         <Stack.Screen name='log' component={log} />
         <Stack.Screen name='UserManagement' component={UserManagement} />
+        <Stack.Screen name='machines' component={machines} />
       </Stack.Navigator>
     </NavigationContainer>
   )
