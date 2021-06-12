@@ -10,16 +10,34 @@ import ForgotPassword from '~/SVGComponents/ForgotPassword'
 import { KeyboardAvoidingView, TouchableWithoutFeedback, Platform, TouchableOpacity } from 'react-native'
 import { Keyboard } from 'react-native-ui-lib'
 import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios'
 import roleAction from '~/redux/actions/roleAction'
 export default () => {
   const dispatch = useDispatch()
   const yetki = useSelector((state) => state.Role.str)
   const { navigate } = useNavigation()
-  const [text, setText] = useState('')
+  const [ready, setReady] = useState(false)
+  const [nav, setNav] = useState('')
   const [un, setUn] = useState('')
   const [pw, setPw] = useState('')
+  const [data, setData] = useState('')
   const [devMode, setDevMode] = useState(false)
 
+  useEffect(() => {
+    if (ready) {
+
+
+      setNav(data[0].userDefine)
+      setReady(false)
+    }
+  }, [ready])
+  useEffect(() => {
+    if (nav !== '') {
+      nav == 'Bakımcı' ? navigate('indexMaintainer') : navigate('indexSupervisor')
+      console.warn(nav)
+      setNav('')
+    }
+  }, [nav])
   return (
     <Division
       zIndex={1}
@@ -107,6 +125,36 @@ export default () => {
           onLongPress={() => {
             setDevMode(!devMode)
             devMode ? console.warn('Developer mode has been deactived!') : console.warn('Developer mode has been actived!')
+          }}
+          onPress={() => {
+            if (un !== '' && pw !== '') {
+              try {
+                axios
+                  .request({
+                    method: 'post',
+                    url: 'http://192.168.1.33:45455/validate-user',
+                    data: {
+
+                      userPassword: pw,
+                      userMail: un,
+
+                    }
+                  })
+                  .then((response) => {
+
+                    setData(response.data)
+                    dispatch(roleAction(response.data[0].userDefine))
+                    setReady(true)
+                    // console.warn('d')
+                  })
+              } catch (error) {
+                console.log(error)
+                console.warn('hata')
+              }
+            }
+            else {
+              console.warn('hata')
+            }
           }}>
           <Typography
             textAlign='center'

@@ -139,11 +139,11 @@ export default ({ item }: PieceProps) => {
         <Division
           flexDirection='row'
           justifyContent='space-evenly'>
-          <Daily width={wp(5)} height={wp(5)} fill={item?.maintenanceType[0]?.typeName == 'daily' ? 'green' : '#ACACAC'} />
-          <Weekly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[1]?.typeName == 'weekly' ? 'green' : '#ACACAC'} />
-          <Monthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[2]?.typeName == 'monthly' ? 'green' : '#ACACAC'} />
-          <SixMonthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[3]?.typeName == 'yearly' ? 'green' : '#ACACAC'} />
-          <Yearly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[4]?.typeName == 'yearly' ? 'green' : '#ACACAC'} />
+          <Daily width={wp(5)} height={wp(5)} fill={item?.maintenanceType[0]?.MaintenanceType == 'daily' ? 'green' : '#ACACAC'} />
+          <Weekly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[1]?.MaintenanceType == 'weekly' ? 'green' : '#ACACAC'} />
+          <Monthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[2]?.MaintenanceType == 'monthly' ? 'green' : '#ACACAC'} />
+          <SixMonthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[3]?.MaintenanceType == 'yearly' ? 'green' : '#ACACAC'} />
+          <Yearly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[4]?.MaintenanceType == 'yearly' ? 'green' : '#ACACAC'} />
         </Division>
         <Division
           alignItems='flex-end'>

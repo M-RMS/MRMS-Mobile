@@ -12,6 +12,7 @@ import Touchable from './Touchable'
 
 export default () => {
   const { navigate } = useNavigation()
+  const mode = 'adminEdit'
   return (
     <Division alignItems='center' width={wp(100)} position='absolute' bottom={wp(4.8)} zIndex={999}>
       <Division
@@ -37,7 +38,7 @@ export default () => {
           <Home width={35} height={35} />
         </Touchable>
         <Touchable
-          onPress={() => { navigate('profile') }}>
+          onPress={() => { navigate('profile', mode) }}>
           <Profile />
         </Touchable>
         <Touchable

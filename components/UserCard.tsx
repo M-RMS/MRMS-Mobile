@@ -22,6 +22,7 @@ interface UserMProps {
 }
 
 export default ({ item }: UserMProps) => {
+  const mode = 'EditUser'
   const { navigate } = useNavigation()
   const [modalVisible, setModalVisible] = useState(false)
   const [name, setName] = useState('?')
@@ -159,7 +160,12 @@ export default ({ item }: UserMProps) => {
       <Division
         width={wp(10)}
         justifyContent='space-evenly'>
-        <Touchable>
+        <Touchable
+          onPress={() => {
+            let a = [mode, item]
+
+            navigate('profile', a)
+          }}>
           <Edit width={wp(7)} height={wp(7)} fill={'#FFC90A'} />
         </Touchable>
         <Touchable

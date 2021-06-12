@@ -11,6 +11,8 @@ import { View, Modal } from 'react-native'
 import { useSelector } from 'react-redux'
 import TabNavSupervisor from '~/components/TabNavSupervisor'
 import TabNavMaintainer from '~/components/TabNavMaintainer'
+import AddUser from '~/SVGComponents/AddUser'
+
 import TabNavAdmin from '~/components/TabNavAdmin'
 import {
   Menu,
@@ -19,11 +21,11 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu'
 import { MenuProvider } from 'react-native-popup-menu'
-import AddUser from '~/SVGComponents/AddUser'
 export default () => {
+  const mode = 'create'
+
   const { navigate } = useNavigation()
   const yetki = useSelector((state) => state.Role.str)
-
   return (
     <>
       <MenuProvider>
@@ -119,10 +121,14 @@ export default () => {
         right={wp(5)}
         backgroundColor='#78BB43'
         justifyContent='center'
-        alignItems='center'>
+        alignItems='center'
+        onPress={() => {
+          let a = [mode]
+          navigate('profile', a)
+        }}>
         <AddUser width={wp(8)} height={wp(8)} fill={'#ffffff'} />
       </Touchable>
-      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <TabNavAdmin />}
+      { yetki == 'Bakımcı' ? <TabNavMaintainer /> : yetki == 'Gözlemci' ? <TabNavSupervisor /> : yetki == 'Yönetici' ? <TabNavAdmin /> : <Division />}
 
 
     </>

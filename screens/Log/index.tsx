@@ -180,7 +180,7 @@ export default () => {
 
       </MenuProvider>
 
-      { yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <TabNavAdmin />}
+      { yetki == 'Bakımcı' ? <TabNavMaintainer /> : yetki == 'Gözlemci' ? <TabNavSupervisor /> : yetki == 'Yönetici' ? <TabNavAdmin /> : <Division />}
     </>
   )
 }

@@ -172,7 +172,7 @@ export default ({ item }: DailyTasksProps) => {
               alignItems='center'
               onPress={() => {
 
-                navigate('pieceDetail', item)
+                navigate('pieceDetail', item.pieceID)
               }}>
               <Detail fill={item.pieceRiskDegree == 5 ? '#ED1766'
                 : item.pieceRiskDegree == 4 ? '#ED7823'
