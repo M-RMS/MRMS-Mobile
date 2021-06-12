@@ -22,6 +22,7 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu'
 import { MenuProvider } from 'react-native-popup-menu'
+import Header from '~/components/Header'
 export default () => {
   const { navigate } = useNavigation()
   const yetki = useSelector((state) => state.Role.str)
@@ -30,82 +31,26 @@ export default () => {
   return (
     <>
       <MenuProvider>
+        <Header title='Bakım Geçmişi' />
         <Division
-          height={wp(30)}
-          alignSelf='stretch'
-          backgroundColor='#1FB9FC'
-          justifyContent='center'
-          alignItems='flex-start'>
-          <Division
-            marginTop={wp(3)}
-            flexDirection='row'
-            justifyContent='space-around'
-            marginHorizontal={wp(5)}
-          >
-            <Division
-              alignItems='center'
+          position='absolute'
+          zIndex={999}
+          right={wp(0)}
+          top={wp(10)}>
+          <Menu>
+            <MenuTrigger children={<Division
+              width={wp(10)}
+              height={wp(10)}
               justifyContent='center'
-              width={wp(17)}
-              height={wp(13)}
-              marginRight={wp(2)}
-            >
-              <RiskManagement />
-            </Division>
-            <Division
-              borderColor='#ffffff'
-              borderStyle='solid'
-              borderLeftWidth={1}
-              opacity={0.5}
-            />
-            <Division marginLeft={wp(2)}>
-              <Typography
-                fontSize={wp(5)}
-                fontWeight='bold'
-                letterSpacing={0.33}
-                color='#ffffff'
-              >
-                Bakım Geçmişi
-            </Typography>
-              <Typography
-                opacity={0.6}
-                fontSize={wp(4)}
-                color='#ffffff'
-                letterSpacing={0.4}
-                lineHeight={wp(5)}
-              >
-                Mert Mehmet Ezgin
-              </Typography>
-            </Division>
-          </Division>
-          <Division
-            width={wp(100)}
-            alignItems='center'
-            position='absolute'
-            bottom={-wp(6)}
-          >
-          </Division>
-          <Touchable
-            activeOpacity={1}
-            position='absolute'
-            zIndex={999}
-            right={wp(0)}
-            top={wp(10)}>
-            <View>
-              <Menu>
-                <MenuTrigger children={<Division
-                  width={wp(10)}
-                  height={wp(10)}
-                  justifyContent='center'
-                  alignItems='center'>
-                  <DotsVertical />
-                </Division>} />
-                <MenuOptions customStyles={optionsStyles}>
-                  <MenuOption onSelect={() => { }} text='Yenile' />
-                  <MenuOption onSelect={() => { navigate('Login') }} text='Çıkış Yap' />
-                </MenuOptions>
-              </Menu>
-            </View>
-          </Touchable>
+              alignItems='center'>
+              <DotsVertical />
+            </Division>} />
+            <MenuOptions customStyles={optionsStyles}>
+
+              <MenuOption onSelect={() => { }} text='Yenile' />
+
+            </MenuOptions>
+          </Menu>
         </Division>
         <Division
           width={wp(100)}
@@ -180,7 +125,7 @@ export default () => {
 
       </MenuProvider>
 
-      { yetki == 'Bakımcı' ? <TabNavMaintainer /> : yetki == 'Gözlemci' ? <TabNavSupervisor /> : yetki == 'Yönetici' ? <TabNavAdmin /> : <Division />}
+      { yetki.userDefine == 'Bakımcı' ? <TabNavMaintainer /> : yetki.userDefine == 'Gözlemci' ? <TabNavSupervisor /> : yetki.userDefine == 'Yönetici' ? <TabNavAdmin /> : <Division />}
     </>
   )
 }

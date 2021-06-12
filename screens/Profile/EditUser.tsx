@@ -8,6 +8,8 @@ import Image from '~/components/Image'
 import axios from 'axios'
 import { KeyboardAvoidingView, TextInput } from 'react-native'
 import Camera from '~/SVGComponents/PhotoCamera'
+import { useDispatch } from 'react-redux'
+import RandomNumberAction from '~/redux/actions/RandomNumberAction'
 import { wp, hp } from '~/utils/responsive'
 import { Item } from 'react-native-paper/lib/typescript/components/List/List'
 export default (item) => {
@@ -17,12 +19,23 @@ export default (item) => {
   const [text, setText] = useState('')
   const [id, setID] = useState(-1)
   const [name, setName] = useState('')
-  const [define, setDefine] = useState('Yönetici')
+  const [define, setDefine] = useState('')
   const [mobile, setMobile] = useState('')
   const [mail, setMail] = useState('')
+  const dispatch = useDispatch()
+
   useEffect(() => {
+    dispatch(RandomNumberAction(Math.random()))
     setID(item.item.userID)
   }, [])
+
+  useEffect(() => {
+    name == '' ? setName(item.item.userName) : ''
+    pw == '' ? setPw(item.item.userPassword) : ''
+    mail == '' ? setMail(item.item.userMail) : ''
+    mobile == '' ? setMobile(item.item.userMobile) : ''
+    define == '' ? setDefine(item.item.userDefine) : ''
+  }, [name, pw, mail, mobile, define])
   return (
     <>
       <Division
@@ -238,32 +251,30 @@ export default (item) => {
         justifyContent='center'
         alignItems='center'
         onPress={() => {
-          if (name !== '' && define !== '' && mobile !== '' && mail !== '' && pw !== '' && id !== -1) {
-            try {
-              axios
-                .request({
-                  method: 'put',
-                  url: 'http://192.168.1.33:45455/api/Users?id=' + id,
-                  data: {
-                    userID: id,
-                    userName: name,
-                    userDefine: define,
-                    userMobile: mobile,
-                    userPassword: pw,
-                    userMail: mail,
-                    userImageURL: 'string'
-                  }
-                })
-                .then((response) => {
-                  console.warn(response.data)
-                })
-            } catch (error) {
-              console.log(error)
-            }
+
+          try {
+            axios
+              .request({
+                method: 'put',
+                url: 'http://192.168.1.33:45455/api/Users?id=' + id,
+                data: {
+                  userID: id,
+                  userName: name,
+                  userDefine: define,
+                  userMobile: mobile,
+                  userPassword: pw,
+                  userMail: mail,
+                  userImageURL: 'string'
+                }
+              })
+              .then((response) => {
+                console.warn(response.data)
+              })
+          } catch (error) {
+            console.log(error)
+
           }
-          else {
-            console.warn('hata')
-          }
+
         }}>
         <Tick width={wp(8)} height={wp(8)} fill={'#ffffff'} />
       </Touchable>

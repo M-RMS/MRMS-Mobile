@@ -9,6 +9,7 @@ import Touchable from './Touchable'
 
 
 export default () => {
+  const mode = 'EditAsSupervisorMaintainer'
   const { navigate } = useNavigation()
   return (
     <Division alignItems='center' width={wp(100)} position='absolute' bottom={wp(4.8)} zIndex={999}>
@@ -32,7 +33,11 @@ export default () => {
           <Home />
         </Touchable>
         <Touchable
-          onPress={() => { navigate('profile') }}>
+          onPress={() => {
+            let a = [mode]
+            navigate('profile', a)
+
+          }}>
           <Profile />
         </Touchable>
       </Division>

@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
 import { wp } from '~/utils/responsive'
 import RiskManagement from '~/SVGComponents/RiskManagement'
-export default () => {
+import { useDispatch, useSelector } from 'react-redux'
+export default (title) => {
+
+  const yetki = useSelector((state) => state.Role.str)
+  const [name, setName] = useState('')
+  useEffect(() => {
+    setName(yetki.userName)
+    console.log(yetki)
+  }, [])
   return (
     <Division
       height={wp(30)}
@@ -40,8 +48,8 @@ export default () => {
             letterSpacing={0.33}
             color='#ffffff'
           >
-            Profili Düzenle
-            </Typography>
+            {title.title}
+          </Typography>
           <Typography
             opacity={0.6}
             fontSize={wp(4)}
@@ -49,8 +57,8 @@ export default () => {
             letterSpacing={0.4}
             lineHeight={wp(5)}
           >
-            Mert Mehmet Ezgin
-              </Typography>
+            {yetki.userName}
+          </Typography>
         </Division>
       </Division>
       <Division

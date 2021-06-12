@@ -4,6 +4,7 @@ import { wp } from '~/utils/responsive'
 import Division from './Division'
 import Profile from '~/SVGComponents/Profile'
 import Home from '~/SVGComponents/Home'
+import Categories from '~/SVGComponents/Categories'
 import History from '~/SVGComponents/History'
 import Machine from '~/SVGComponents/Machine'
 import UserManagement from '~/SVGComponents/UserManagement'
@@ -12,7 +13,7 @@ import Touchable from './Touchable'
 
 export default () => {
   const { navigate } = useNavigation()
-  const mode = 'adminEdit'
+  const mode = 'EditAsAdmin'
   return (
     <Division alignItems='center' width={wp(100)} position='absolute' bottom={wp(4.8)} zIndex={999}>
       <Division
@@ -26,8 +27,8 @@ export default () => {
         alignItems='center'
         justifyContent='space-evenly'>
         <Touchable
-          onPress={() => { navigate('machines') }}>
-          <Machine />
+          onPress={() => { navigate('search') }}>
+          <Categories />
         </Touchable>
         <Touchable
           onPress={() => { navigate('log') }}>
@@ -38,7 +39,12 @@ export default () => {
           <Home width={35} height={35} />
         </Touchable>
         <Touchable
-          onPress={() => { navigate('profile', mode) }}>
+
+          onPress={() => {
+            let a = [mode]
+            navigate('profile', a)
+
+          }}>
           <Profile />
         </Touchable>
         <Touchable

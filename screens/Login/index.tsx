@@ -26,7 +26,7 @@ export default () => {
   useEffect(() => {
     if (ready) {
 
-
+      // console.log(data)
       setNav(data[0].userDefine)
       setReady(false)
     }
@@ -141,9 +141,9 @@ export default () => {
                     }
                   })
                   .then((response) => {
-
+                    console.log(response.data[0].userDefine)
                     setData(response.data)
-                    dispatch(roleAction(response.data[0].userDefine))
+                    dispatch(roleAction(response.data[0]))
                     setReady(true)
                     // console.warn('d')
                   })
@@ -213,7 +213,7 @@ export default () => {
           </Touchable>
         </Division> : <Division />
       }
-      <Division
+      { /*   <Division
         zIndex={-1}
         justifyContent='flex-end'
         alignItems='flex-start'
@@ -234,7 +234,7 @@ export default () => {
             <ForgotPassword fill={'#ffffff'} width={wp(10)} height={wp(10)} />
           </Touchable>
         </Division>
-      </Division>
+  </Division>*/}
     </Division>
   )
 }

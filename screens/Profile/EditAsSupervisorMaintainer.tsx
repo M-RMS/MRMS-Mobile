@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
@@ -8,17 +8,40 @@ import Image from '~/components/Image'
 import axios from 'axios'
 import { KeyboardAvoidingView, TextInput } from 'react-native'
 import Camera from '~/SVGComponents/PhotoCamera'
+import { useDispatch } from 'react-redux'
+import RandomNumberAction from '~/redux/actions/RandomNumberAction'
 import { wp, hp } from '~/utils/responsive'
+import { Item } from 'react-native-paper/lib/typescript/components/List/List'
+import { useSelector } from 'react-redux'
 export default () => {
-  const mode = 'create'
+  const yetki = useSelector((state) => state.Role.str)
+
+
   const [pw, setPw] = useState('')
   const [pwC, setPwc] = useState('')
   const [text, setText] = useState('')
+  const [item, setItem] = useState(yetki)
+  const [id, setID] = useState(-1)
   const [name, setName] = useState('')
   const [define, setDefine] = useState('')
   const [mobile, setMobile] = useState('')
   const [mail, setMail] = useState('')
-  const [pwVisibility, setPwVisibility] = useState(false)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    setItem(yetki)
+  }, [])
+  useEffect(() => {
+    dispatch(RandomNumberAction(Math.random()))
+    setID(item.userID)
+  }, [])
+
+  useEffect(() => {
+    name == '' ? setName(item.userName) : ''
+    pw == '' ? setPw(item.userPassword) : ''
+    mail == '' ? setMail(item.userMail) : ''
+    mobile == '' ? setMobile(item.userMobile) : ''
+    define == '' ? setDefine(item.userDefine) : ''
+  }, [name, pw, mail, mobile, define])
   return (
     <>
       <Division
@@ -73,9 +96,10 @@ export default () => {
           </Typography>
           <TextInput
             autoCapitalize='none'
+            editable={false}
             style={{ paddingLeft: wp(4), fontSize: wp(3.5) }}
             placeholderTextColor='#8898aa'
-            placeholder='İsim'
+            placeholder={item.userName}
             //secureTextEntry
             onChangeText={(text) => {
               setName(text)
@@ -95,7 +119,7 @@ export default () => {
             autoCapitalize='none'
             style={{ paddingLeft: wp(4), fontSize: wp(3.5) }}
             placeholderTextColor='#8898aa'
-            placeholder='Email'
+            placeholder={item.userMail}
             //secureTextEntry
             onChangeText={(text) => {
               setMail(text)
@@ -113,7 +137,7 @@ export default () => {
           </Typography>
           <Division
             flexDirection='row'>
-            <Touchable
+            <Division
               width={wp(19)}
               height={wp(8)}
               borderRadius={wp(4)}
@@ -122,9 +146,7 @@ export default () => {
               borderColor='#1FB9FC'
               justifyContent='center'
               alignItems='center'
-              onPress={() => {
-                setDefine('Yönetici')
-              }}>
+            >
               <Typography
                 textAlign='center'
                 color={define == 'Yönetici' ? '#ffffff' : '#1FB9FC'}
@@ -132,8 +154,8 @@ export default () => {
                 fontWeight='semi-bold'>
                 Yönetici
                 </Typography>
-            </Touchable>
-            <Touchable
+            </Division>
+            <Division
               marginLeft={wp(2)}
               width={wp(19)}
               height={wp(8)}
@@ -143,9 +165,7 @@ export default () => {
               borderColor='#1FB9FC'
               justifyContent='center'
               alignItems='center'
-              onPress={() => {
-                setDefine('Gözlemci')
-              }}>
+            >
               <Typography
                 textAlign='center'
                 color={define == 'Gözlemci' ? '#ffffff' : '#1FB9FC'}
@@ -153,8 +173,8 @@ export default () => {
                 fontWeight='semi-bold'>
                 Gözlemci
                 </Typography>
-            </Touchable>
-            <Touchable
+            </Division>
+            <Division
               marginLeft={wp(2)}
               width={wp(19)}
               height={wp(8)}
@@ -164,9 +184,7 @@ export default () => {
               borderColor='#1FB9FC'
               justifyContent='center'
               alignItems='center'
-              onPress={() => {
-                setDefine('Bakımcı')
-              }}>
+            >
               <Typography
                 textAlign='center'
                 color={define == 'Bakımcı' ? '#ffffff' : '#1FB9FC'}
@@ -174,7 +192,7 @@ export default () => {
                 fontWeight='semi-bold'>
                 Bakımcı
                 </Typography>
-            </Touchable>
+            </Division>
           </Division>
         </Division>
         <Division borderBottomWidth={1} borderColor='#A0A0A0' marginVertical={wp(2)} />
@@ -191,7 +209,7 @@ export default () => {
             autoCapitalize='none'
             style={{ paddingLeft: wp(4), fontSize: wp(3.5) }}
             placeholderTextColor='#8898aa'
-            placeholder='Telefon Numarası'
+            placeholder={item.userMobile}
             editable={true}
             //secureTextEntry
             onChangeText={(text) => {
@@ -213,9 +231,9 @@ export default () => {
             autoCapitalize='none'
             style={{ paddingLeft: wp(4), fontSize: wp(3.5) }}
             placeholderTextColor='#8898aa'
-            placeholder='*******'
+            placeholder={item.userPassword}
             editable={true}
-            //secureTextEntry
+            //secureTextEntry={true}
             onChangeText={(pw) => {
               setPw(pw)
             }}
@@ -234,31 +252,30 @@ export default () => {
         justifyContent='center'
         alignItems='center'
         onPress={() => {
-          if (name !== '' && define !== '' && mobile !== '' && mail !== '' && pw !== '') {
-            try {
-              axios
-                .request({
-                  method: 'post',
-                  url: 'http://192.168.1.33:45455/api/Users',
-                  data: {
-                    userName: name,
-                    userDefine: define,
-                    userMobile: mobile,
-                    userPassword: pw,
-                    userMail: mail,
-                    userImageURL: 'string'
-                  }
-                })
-                .then((response) => {
-                  console.warn(response.data)
-                })
-            } catch (error) {
-              console.log(error)
-            }
+
+          try {
+            axios
+              .request({
+                method: 'put',
+                url: 'http://192.168.1.33:45455/api/Users?id=' + id,
+                data: {
+                  userID: id,
+                  userName: name,
+                  userDefine: define,
+                  userMobile: mobile,
+                  userPassword: pw,
+                  userMail: mail,
+                  userImageURL: 'string'
+                }
+              })
+              .then((response) => {
+                console.warn(response.data)
+              })
+          } catch (error) {
+            console.log(error)
+
           }
-          else {
-            console.warn('hata')
-          }
+
         }}>
         <Tick width={wp(8)} height={wp(8)} fill={'#ffffff'} />
       </Touchable>

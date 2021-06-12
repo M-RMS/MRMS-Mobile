@@ -11,6 +11,8 @@ import TabNavAdmin from '~/components/TabNavAdmin'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import Create from './Create'
 import EditUser from './EditUser'
+import EditAsAdmin from './EditAsAdmin'
+import EditAsSupervisorMaintainer from './EditAsSupervisorMaintainer'
 import {
   Menu,
   MenuOptions,
@@ -26,7 +28,7 @@ export default () => {
   return (
     <>
       <MenuProvider>
-        <Header />
+        <Header title='Profili Düzenle' />
         <Division
           position='absolute'
           zIndex={999}
@@ -47,8 +49,13 @@ export default () => {
             </MenuOptions>
           </Menu>
         </Division>
-        {data[0] == 'EditUser' ? <EditUser item={data[1]} /> : <Create />}
-        {yetki == 'Maintainer' ? <TabNavMaintainer /> : yetki == 'Supervisor' ? <TabNavSupervisor /> : <TabNavAdmin />}
+        {data[0] == 'EditUser' ? <EditUser item={data[1]} />
+          : data[0] == 'create' ? <Create />
+            : data[0] == 'EditAsAdmin' ? <EditAsAdmin />
+              : data[0] == 'EditAsSupervisorMaintainer' ? <EditAsSupervisorMaintainer />
+                : <Division />
+        }
+        {yetki.userDefine == 'Bakımcı' ? <TabNavMaintainer /> : yetki.userDefine == 'Gözlemci' ? <TabNavSupervisor /> : yetki.userDefine == 'Yönetici' ? <TabNavAdmin /> : <Division />}
       </MenuProvider>
     </>
   )
