@@ -100,7 +100,7 @@ export default ({ item }: DailyTasksProps) => {
           width={wp(10)}
           borderRadius={wp(5)}>
           <Image
-            source={{ uri: 'http://placeimg.com/500/500/nature?19630' }}
+            source={{ uri: item.pieceImageURL }}
             style={{
               width: wp(10),
               height: wp(10),
@@ -133,15 +133,28 @@ export default ({ item }: DailyTasksProps) => {
               {' ' + item.mdefination}
             </Typography>
           </Typography>
-          {!arrowState ? <Division /> : <Typography
-            numberOfLines={3}
-            fontSize={wp(4)}
-            color='#303E65'>
-            Bakım Döngüsü
+
+          {!arrowState ? <Division /> :
+            <Division>
+              <Typography
+                numberOfLines={3}
+                fontSize={wp(4)}
+                color='#303E65'>
+                Bakım Döngüsü
             <Typography>
-              {' ' + item.mtypes}
-            </Typography>
-          </Typography>}
+                  {' ' + item.mtypes}
+                </Typography>
+              </Typography>
+              <Typography
+                numberOfLines={arrowState ? 3 : 1}
+                fontSize={wp(4)}
+                color='#303E65'>
+                Oluşabilecek arızalar:
+            <Typography>
+                  {' ' + item.moccurederror}
+                </Typography>
+              </Typography>
+            </Division>}
         </Division>
         <Division borderLeftWidth={1} marginRight={wp(2)} opacity={0.5} height={arrowState ? wp(42) : wp(19)} borderColor={item.pieceRiskDegree == 5 ? '#ED1766'
           : item.pieceRiskDegree == 4 ? '#ED7823'
@@ -188,7 +201,7 @@ export default ({ item }: DailyTasksProps) => {
           : item.pieceRiskDegree == 3 ? '#FFC90A'
             : item.pieceRiskDegree == 2 ? '#78BB43'
               : '#1F9ED9'} marginTop={arrowState ? wp(0) : wp(0)} />
-      <Division
+      {/*<Division
         alignItems='center'
         height={wp(11)}
         justifyContent='space-around'
@@ -232,13 +245,17 @@ export default ({ item }: DailyTasksProps) => {
             Arızalı
             </Typography>
         </Touchable>
-        <Touchable
-          onPress={() => {
-            setArrowState(!arrowState)
-          }}>
-          {arrowState ? <UpArrow fill='#303E65' /> : <ArrowDown fill='#303E65' />}
-        </Touchable>
-      </Division>
+
+      </Division>*/}
+      <Touchable
+        alignSelf='flex-end'
+        marginRight={wp(10)}
+        marginTop={wp(3)}
+        onPress={() => {
+          setArrowState(!arrowState)
+        }}>
+        {arrowState ? <UpArrow fill='#303E65' /> : <ArrowDown fill='#303E65' />}
+      </Touchable>
     </Division >
   )
 }

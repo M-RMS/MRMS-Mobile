@@ -98,7 +98,7 @@ export default ({ item }: UserMProps) => {
           height={wp(25)}
           borderRadius={wp(25 / 5)}>
           <Image
-            source={{ uri: 'http://placeimg.com/500/500/people?19630' }}
+            source={{ uri: item.userImageURL }}
             style={{
               width: wp(25),
               height: wp(25),

@@ -103,13 +103,13 @@ export default ({ item }: PieceProps) => {
       flexDirection='row'
       backgroundColor='#ffffff'
       onPress={() => {
-        navigate('pieceDetail', item)
+        navigate('pieceDetail', item.pieceID)
       }}>
       <Division
         height={wp(30)}
         width={wp(30)}>
         <Image
-          source={{ uri: 'http://placeimg.com/500/500/people?19637' }}
+          source={{ uri: item.pieceImgUrl }}
           style={{
             width: wp(30),
             height: wp(30),
@@ -139,11 +139,11 @@ export default ({ item }: PieceProps) => {
         <Division
           flexDirection='row'
           justifyContent='space-evenly'>
-          <Daily width={wp(5)} height={wp(5)} fill={item?.maintenanceType[0]?.MaintenanceType == 'daily' ? 'green' : '#ACACAC'} />
-          <Weekly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[1]?.MaintenanceType == 'weekly' ? 'green' : '#ACACAC'} />
-          <Monthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[2]?.MaintenanceType == 'monthly' ? 'green' : '#ACACAC'} />
-          <SixMonthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[3]?.MaintenanceType == 'yearly' ? 'green' : '#ACACAC'} />
-          <Yearly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[4]?.MaintenanceType == 'yearly' ? 'green' : '#ACACAC'} />
+          <Daily width={wp(5)} height={wp(5)} fill={item?.maintenanceType[0]?.MaintenanceType == 'Günlük' ? 'green' : '#ACACAC'} />
+          <Weekly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[1]?.MaintenanceType == 'Haftalık' ? 'green' : '#ACACAC'} />
+          <Monthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[2]?.MaintenanceType == 'Aylık' ? 'green' : '#ACACAC'} />
+          <SixMonthly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[3]?.MaintenanceType == 'Altı aylık' ? 'green' : '#ACACAC'} />
+          <Yearly width={wp(5)} height={wp(5)} fill={item?.maintenanceType[4]?.MaintenanceType == 'Yıllık' ? 'green' : '#ACACAC'} />
         </Division>
         <Division
           alignItems='flex-end'>

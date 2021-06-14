@@ -31,13 +31,16 @@ export default () => {
         </Touchable>
         <Touchable
           onPress={() => {
-            let a = [mode]
-            navigate('profile', a)
+
+            navigate('indexSupervisor')
           }}>
           <Home />
         </Touchable>
         <Touchable
-          onPress={() => { navigate('profile') }}>
+          onPress={() => {
+            let a = [mode]
+            navigate('profile', a)
+          }}>
           <Profile />
         </Touchable>
       </Division>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Division from '~/components/Division'
 import Typography from '~/components/Typography'
 import Touchable from '~/components/Touchable'
+import { Modal } from 'react-native'
 import { hp, wp } from '~/utils/responsive'
 import { useNavigation } from '@react-navigation/native'
 import { TextInput } from 'react-native-paper'
@@ -11,6 +12,7 @@ import { KeyboardAvoidingView, TouchableWithoutFeedback, Platform, TouchableOpac
 import { Keyboard } from 'react-native-ui-lib'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
+import Cross from '~/SVGComponents/Cross'
 import roleAction from '~/redux/actions/roleAction'
 export default () => {
   const dispatch = useDispatch()
@@ -22,7 +24,7 @@ export default () => {
   const [pw, setPw] = useState('')
   const [data, setData] = useState('')
   const [devMode, setDevMode] = useState(false)
-
+  const [modalVisible, setModalVisible] = useState(false)
   useEffect(() => {
     if (ready) {
 
@@ -149,11 +151,11 @@ export default () => {
                   })
               } catch (error) {
                 console.log(error)
-                console.warn('hata')
               }
             }
             else {
               console.warn('hata')
+              setModalVisible(true)
             }
           }}>
           <Typography
@@ -235,6 +237,36 @@ export default () => {
           </Touchable>
         </Division>
   </Division>*/}
+      <Modal
+        animationType='slide'
+        transparent={true}
+        visible={modalVisible}>
+        <Division
+          padding={wp(5)}
+          width={wp(80)}
+          height={wp(45)}
+          backgroundColor='#ffffff'
+          borderWidth={1}
+          borderRadius={wp(5)}
+          borderColor='#1FB9FC'
+          top={hp(50) - wp(45 / 2)}
+          marginHorizontal={wp(10)}
+          elevation={3}
+          shadowOpacity={1}
+          shadowColor='black'>
+          <Touchable
+            alignSelf='flex-end'
+            onPress={() => { setModalVisible(false) }}>
+            <Cross fill={'#D8D8D8'} width={wp(4)} height={wp(4)} />
+          </Touchable>
+          <Typography
+            fontSize={wp(4)}
+            marginTop={wp(7)}
+            color='#303E65'>
+            Email veye Şifre hatalı!
+          </Typography>
+        </Division>
+      </Modal>
     </Division>
   )
 }

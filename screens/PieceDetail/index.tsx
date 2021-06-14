@@ -51,7 +51,7 @@ export default () => {
           height={wp(60)}
           width={wp(100)}>
           <Image
-            source={{ uri: 'https://cdn.discordapp.com/attachments/777843121828528143/853046285149274132/unknown.png' }}
+            source={{ uri: data[0].pieceImgUrl }}
             style={{
               width: '100%',
               flex: 1,
@@ -278,7 +278,12 @@ export default () => {
                   color='#193254'
                 >{
                     data[0]?.maintenanceType[0]?.MaintenanceDefinition ? data[0]?.maintenanceType[0]?.MaintenanceDefinition : 'Günlük bakımı mevcut değildir.'
+
                   }
+                  <Typography
+                    fontSize={wp(3.3)}
+                    letterSpacing={0.27}
+                    color='#193254'>{'\n ' + data[0]?.maintenanceType[0]?.MaintenanceOccuredError ? data[0]?.maintenanceType[0]?.MaintenanceOccuredError : ''}</Typography>
                 </Typography>
                 : state == 3 ?
                   <Typography
@@ -288,6 +293,10 @@ export default () => {
                   >{
                       data[0]?.maintenanceType[1]?.MaintenanceDefinition ? data[0]?.maintenanceType[1]?.MaintenanceDefinition : 'Haftalık bakımı mevcut değildir.'
                     }
+                    <Typography
+                      fontSize={wp(3.3)}
+                      letterSpacing={0.27}
+                      color='#193254'>{'\n ' + data[0]?.maintenanceType[1]?.MaintenanceOccuredError ? data[0]?.maintenanceType[1]?.MaintenanceOccuredError : ''}</Typography>
                   </Typography>
                   : state == 4 ?
                     <Typography
@@ -297,6 +306,10 @@ export default () => {
                     >{
                         data[0]?.maintenanceType[2]?.MaintenanceDefinition ? data[0]?.maintenanceType[2]?.MaintenanceDefinition : 'Aylık bakımı mevcut değildir.'
                       }
+                      <Typography
+                        fontSize={wp(3.3)}
+                        letterSpacing={0.27}
+                        color='#193254'>{'\n ' + data[0]?.maintenanceType[2]?.MaintenanceOccuredError ? data[0]?.maintenanceType[2]?.MaintenanceOccuredError : ''}</Typography>
                     </Typography>
                     : state == 5 ?
                       <Typography
@@ -305,7 +318,10 @@ export default () => {
                         color='#193254'
                       >{
                           data[0]?.maintenanceType[3]?.MaintenanceDefinition ? data[0]?.maintenanceType[3]?.MaintenanceDefinition : '6 Aylık bakımı mevcut değildir.'
-                        }
+                        }<Typography
+                          fontSize={wp(3.3)}
+                          letterSpacing={0.27}
+                          color='#193254'>{'\n ' + data[0]?.maintenanceType[3]?.MaintenanceOccuredError ? data[0]?.maintenanceType[3]?.MaintenanceOccuredError : ''}</Typography>
                       </Typography>
                       : state == 6 ?
                         <Typography
@@ -314,7 +330,10 @@ export default () => {
                           color='#193254'
                         >{
                             data[0]?.maintenanceType[4]?.MaintenanceDefinition ? data[0]?.maintenanceType[4]?.MaintenanceDefinition : 'Yıllık bakımı mevcut değildir.'
-                          }
+                          }<Typography
+                            fontSize={wp(3.3)}
+                            letterSpacing={0.27}
+                            color='#193254'>{'\n ' + data[0]?.maintenanceType[4]?.MaintenanceOccuredError ? data[0]?.maintenanceType[4]?.MaintenanceOccuredError : ''}</Typography>
                         </Typography>
                         : <Division />
             }
