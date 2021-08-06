@@ -201,7 +201,7 @@ export default ({ item }: DailyTasksProps) => {
           : item.pieceRiskDegree == 3 ? '#FFC90A'
             : item.pieceRiskDegree == 2 ? '#78BB43'
               : '#1F9ED9'} marginTop={arrowState ? wp(0) : wp(0)} />
-      {/*<Division
+      <Division
         alignItems='center'
         height={wp(11)}
         justifyContent='space-around'
@@ -245,17 +245,17 @@ export default ({ item }: DailyTasksProps) => {
             Arızalı
             </Typography>
         </Touchable>
+        <Touchable
+          alignSelf='center'
+          marginBottom={wp(1)}
+          marginTop={wp(3)}
+          onPress={() => {
+            setArrowState(!arrowState)
+          }}>
+          {arrowState ? <UpArrow fill='#303E65' /> : <ArrowDown fill='#303E65' />}
+        </Touchable>
+      </Division>
 
-      </Division>*/}
-      <Touchable
-        alignSelf='flex-end'
-        marginRight={wp(10)}
-        marginTop={wp(3)}
-        onPress={() => {
-          setArrowState(!arrowState)
-        }}>
-        {arrowState ? <UpArrow fill='#303E65' /> : <ArrowDown fill='#303E65' />}
-      </Touchable>
     </Division >
   )
 }
